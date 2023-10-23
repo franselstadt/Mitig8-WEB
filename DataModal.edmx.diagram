@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f09e9a1c3cc742479a09cbb0cb0cfab2" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="DataModelEntities.Application" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModelEntities.Company" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModelEntities.CompanyType" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModelEntities.Device" Width="1.5" PointX="4.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModelEntities.District" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModelEntities.GeoStamp" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModelEntities.IdentityType" Width="1.5" PointX="6.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModelEntities.Notification" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModelEntities.Session" Width="1.5" PointX="17.25" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModelEntities.sysdiagram" Width="1.5" PointX="5.125" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModelEntities.Transaction" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModelEntities.TransactionStatu" Width="1.5" PointX="8.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModelEntities.TransactionType" Width="1.5" PointX="15.625" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModelEntities.User" Width="1.5" PointX="10.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModelEntities.UserType" Width="1.5" PointX="10.5" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModelEntities.Wallet" Width="1.5" PointX="13.875" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModelEntities.WalletAccount" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentStatu" Width="1.5" PointX="3.375" PointY="11.75" />
+        <EntityTypeShape EntityType="DataModelEntities.Assessment" Width="1.5" PointX="5.375" PointY="11.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentCategory" Width="1.5" PointX="7.375" PointY="11.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentSubCategory" Width="1.5" PointX="9.375" PointY="11.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentTrack" Width="1.5" PointX="11.375" PointY="11.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentType" Width="1.5" PointX="12.125" PointY="0.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentUserAllocation" Width="1.5" PointX="12.125" PointY="3" />
+        <EntityTypeShape EntityType="DataModelEntities.Bank" Width="1.5" PointX="7.375" PointY="8.75" />
+        <EntityTypeShape EntityType="DataModelEntities.NotificationType" Width="1.5" PointX="9.375" PointY="8.75" />
+        <EntityTypeShape EntityType="DataModelEntities.WalletAccountType" Width="1.5" PointX="11.375" PointY="8.75" />
+        <EntityTypeShape EntityType="DataModelEntities.NotificationStatu" Width="1.5" PointX="6.75" PointY="4.875" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentQuote" Width="1.5" PointX="13.75" PointY="10.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentQuoteDecon" Width="1.5" PointX="7.75" PointY="14.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentSurveyAssociation" Width="1.5" PointX="13.75" PointY="14.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentSurvey" Width="1.5" PointX="0.75" PointY="15.75" />
+        <EntityTypeShape EntityType="DataModelEntities.QuoteCard" Width="1.5" PointX="2.75" PointY="15.75" />
+        <EntityTypeShape EntityType="DataModelEntities.QuoteCardSplit" Width="1.5" PointX="15.75" PointY="9.75" />
+        <EntityTypeShape EntityType="DataModelEntities.Survey" Width="1.5" PointX="9.75" PointY="15.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentAddress" Width="1.5" PointX="16.375" PointY="13.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentClientBooking" Width="1.5" PointX="12.375" PointY="17.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentPolicyDetail" Width="1.5" PointX="14.375" PointY="17.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentPolicyElement" Width="1.5" PointX="16.375" PointY="17.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentQuoteStatu" Width="1.5" PointX="12.125" PointY="5.875" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentTrackType" Width="1.5" PointX="18.375" PointY="12.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentSurveyStatu" Width="1.5" PointX="13.875" PointY="3.125" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentRiskClassificationSummary" Width="1.5" PointX="13.875" PointY="5" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentRiskFactor" Width="1.5" PointX="15.625" PointY="2.375" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentDocument" Width="1.5" PointX="15.625" PointY="6" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentRiskClassificationFactor" Width="1.5" PointX="18.375" PointY="15.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentRequirement" Width="1.5" PointX="18.375" PointY="18.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentImage" Width="1.5" PointX="0.75" PointY="19.75" />
+        <EntityTypeShape EntityType="DataModelEntities.SurveyCategory" Width="1.5" PointX="19.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DataModelEntities.IndustrySector" Width="1.5" PointX="7.375" PointY="19.75" />
+        <EntityTypeShape EntityType="DataModelEntities.IndustrySectorClass" Width="1.5" PointX="9.375" PointY="19.75" />
+        <EntityTypeShape EntityType="DataModelEntities.IndustrySubSector" Width="1.5" PointX="15.625" PointY="4.125" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentSurveyJournal" Width="1.5" PointX="17.25" PointY="5.625" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentReview" Width="1.5" PointX="20.375" PointY="10.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentAttachment" Width="1.5" PointX="20.375" PointY="14.75" />
+        <EntityTypeShape EntityType="DataModelEntities.CPS_Statement" Width="1.5" PointX="20.375" PointY="18.75" />
+        <EntityTypeShape EntityType="DataModelEntities.RiskType" Width="1.5" PointX="17.25" PointY="3.875" />
+        <EntityTypeShape EntityType="DataModelEntities.Invoice" Width="1.5" PointX="19.375" PointY="3.75" />
+        <EntityTypeShape EntityType="DataModelEntities.CustodiansPerOrganization" Width="1.5" PointX="19.375" PointY="7.75" />
+        <EntityTypeShape EntityType="DataModelEntities.lh_OccupationPermission" Width="1.5" PointX="21.375" PointY="3.75" />
+        <EntityTypeShape EntityType="DataModelEntities.Organization" Width="1.5" PointX="11.375" PointY="21.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentReference" Width="1.5" PointX="21.375" PointY="6.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentRequirementDocument" Width="1.5" PointX="13.375" PointY="21.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentAsset" Width="1.5" PointX="15.375" PointY="21.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentBuilding" Width="1.5" PointX="22.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentRoom" Width="1.5" PointX="7.375" PointY="22.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentRoomType" Width="1.5" PointX="22.375" PointY="9.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentPropertyDetail" Width="1.5" PointX="22.75" PointY="12.75" />
+        <EntityTypeShape EntityType="DataModelEntities.Border" Width="1.5" PointX="22.75" PointY="21.75" />
+        <EntityTypeShape EntityType="DataModelEntities.ExtendOfLand" Width="1.5" PointX="0.75" PointY="23.75" />
+        <EntityTypeShape EntityType="DataModelEntities.RoofConstruction" Width="1.5" PointX="2.75" PointY="23.75" />
+        <EntityTypeShape EntityType="DataModelEntities.TypeOfResidence" Width="1.5" PointX="23.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DataModelEntities.Vicinity" Width="1.5" PointX="23.75" PointY="6.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentRateCard" Width="1.5" PointX="17.375" PointY="23.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssetCategory" Width="1.5" PointX="24.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssetSubCategory" Width="1.5" PointX="24.375" PointY="9.75" />
+        <EntityTypeShape EntityType="DataModelEntities.UOM" Width="1.5" PointX="19.375" PointY="24.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssetMedia" Width="1.5" PointX="21.375" PointY="24.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssetMediaItem" Width="1.5" PointX="23.375" PointY="24.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentExpense" Width="1.5" PointX="25.375" PointY="12.75" />
+        <EntityTypeShape EntityType="DataModelEntities.AssessmentExpenseType" Width="1.5" PointX="25.375" PointY="16.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

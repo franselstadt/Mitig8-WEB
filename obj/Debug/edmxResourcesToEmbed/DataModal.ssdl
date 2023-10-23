@@ -1,0 +1,2770 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DataModelEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Applications">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+    <Property Name="cDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.Assessment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Assessment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssessmentTypeID" Type="int" />
+    <Property Name="AssessmentStatusID" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="cDate" Type="datetime" />
+    <Property Name="Reference" Type="varchar" MaxLength="250" />
+    <Property Name="OtherReference" Type="nchar" MaxLength="10" />
+    <Property Name="CustomerReference" Type="varchar" MaxLength="250" />
+    <Property Name="PolicyReference" Type="varchar" MaxLength="250" />
+    <Property Name="SurveyJSON" Type="varchar(max)" />
+    <Property Name="SurveyJSONResult" Type="varchar(max)" />
+    <Property Name="Quote" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DistrictID" Type="int" />
+    <Property Name="Address1" Type="varchar" MaxLength="250" />
+    <Property Name="Address2" Type="varchar" MaxLength="250" />
+    <Property Name="AddressInstructions" Type="varchar" MaxLength="250" />
+    <Property Name="ContactPerson" Type="varchar" MaxLength="250" />
+    <Property Name="ContactCellphone" Type="varchar" MaxLength="250" />
+    <Property Name="ContactEmail" Type="varchar" MaxLength="250" />
+    <Property Name="ReceipientName" Type="varchar" MaxLength="250" />
+    <Property Name="ReceipientSignature" Type="varchar(max)" />
+    <Property Name="ReceipientOTP" Type="int" />
+    <Property Name="ReceipientFeedback" Type="varchar(max)" />
+    <Property Name="ReceipientRating" Type="int" />
+    <Property Name="uDate" Type="datetime" />
+    <Property Name="InsurerName" Type="varchar" MaxLength="250" />
+    <Property Name="InsurerContactPerson" Type="varchar" MaxLength="250" />
+    <Property Name="InsurerContactNumber" Type="varchar" MaxLength="250" />
+    <Property Name="InsurerPolicyNumber" Type="varchar" MaxLength="250" />
+    <Property Name="BrokerName" Type="varchar" MaxLength="250" />
+    <Property Name="BrokerContactNumber" Type="varchar" MaxLength="250" />
+    <Property Name="InsuredName" Type="varchar" MaxLength="250" />
+    <Property Name="InsuredContactNumber" Type="varchar" MaxLength="250" />
+    <Property Name="InsuredIndustrySector" Type="varchar" MaxLength="250" />
+    <Property Name="InsurancePolicyNumber" Type="varchar" MaxLength="240" />
+    <Property Name="InsurerEmailAddress" Type="varchar" MaxLength="250" />
+    <Property Name="InsuredEmailAddress" Type="varchar" MaxLength="250" />
+    <Property Name="BrokerEmailAddress" Type="varchar" MaxLength="250" />
+    <Property Name="NewPolicy" Type="int" />
+    <Property Name="FileUploadCapture" Type="int" />
+    <Property Name="IndustrySectorID" Type="int" />
+    <Property Name="IndustrySubSectorID" Type="int" />
+    <Property Name="IndustrySectorClassID" Type="int" />
+    <Property Name="EML" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="MPL" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="RiskComments" Type="varchar(max)" />
+    <Property Name="MPLComments" Type="varchar(max)" />
+    <Property Name="EMLComments" Type="varchar(max)" />
+    <Property Name="BookingDate" Type="datetime" />
+    <Property Name="BookingConfirmedBy" Type="varchar" MaxLength="550" />
+    <Property Name="BookingConfirmedByContact" Type="varchar" MaxLength="550" />
+    <Property Name="BookingNote" Type="varchar" MaxLength="550" />
+    <Property Name="Special" Type="varchar(max)" />
+    <Property Name="isInternal" Type="int" />
+    <Property Name="ClaimNumber" Type="varchar(max)" />
+    <Property Name="InsurerFunction" Type="varchar(max)" />
+    <Property Name="BrokerFunction" Type="varchar(max)" />
+    <Property Name="StreetNumber" Type="varchar(max)" />
+    <Property Name="StreetName" Type="varchar(max)" />
+    <Property Name="BuildingName" Type="varchar(max)" />
+    <Property Name="Province" Type="varchar(max)" />
+    <Property Name="Town" Type="varchar(max)" />
+    <Property Name="Suburb" Type="varchar(max)" />
+    <Property Name="PostalCode" Type="varchar(max)" />
+    <Property Name="TotalValuationAmmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="BrokerContactPerson" Type="varchar(max)" />
+    <Property Name="DateCompleted" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AssessmentAddress">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssessmentID" Type="int" />
+    <Property Name="DistrictID" Type="int" />
+    <Property Name="StreetNumber" Type="varchar" MaxLength="20" />
+    <Property Name="StreetName" Type="varchar" MaxLength="120" />
+    <Property Name="Unit" Type="varchar" MaxLength="20" />
+    <Property Name="BuildingName" Type="varchar" MaxLength="120" />
+    <Property Name="ContactNumber" Type="varchar" MaxLength="120" />
+    <Property Name="ContactName" Type="varchar" MaxLength="120" />
+    <Property Name="AddressStatusID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AssessmentAsset">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoomID" Type="int" />
+    <Property Name="Title" Type="varchar(max)" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="AssetClassID" Type="int" />
+    <Property Name="AssetTypeID" Type="int" />
+    <Property Name="ManufacturerID" Type="int" />
+    <Property Name="SupplierID" Type="int" />
+    <Property Name="SKU" Type="varchar(max)" />
+    <Property Name="UOM_ID" Type="int" />
+    <Property Name="Measurement" Type="varchar(max)" />
+    <Property Name="ProofOfPurchaseTypeID" Type="int" />
+    <Property Name="ProofOfPurchaseReference" Type="varchar(max)" />
+    <Property Name="DateOfPurchase" Type="datetime" />
+    <Property Name="Qty" Type="int" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Specified" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="cDate" Type="datetime" />
+    <Property Name="Supplier" Type="varchar(max)" />
+    <Property Name="Manufacturer" Type="varchar(max)" />
+    <Property Name="CategoryID" Type="int" />
+    <Property Name="SubCategoryID" Type="int" />
+  </EntityType>
+  <EntityType Name="AssessmentAttachments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssessmentID" Type="int" />
+    <Property Name="DocumentURL" Type="varchar" MaxLength="3250" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="Type" Type="varchar" MaxLength="150" />
+    <Property Name="uDate" Type="datetime" />
+    <Property Name="SurveyCategoryID" Type="int" />
+    <Property Name="Title" Type="varchar" MaxLength="750" />
+  </EntityType>
+  <EntityType Name="AssessmentBuilding">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="cDate" Type="datetime" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="AssessmentID" Type="int" />
+    <Property Name="Title" Type="varchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.AssessmentCategory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AssessmentCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="cDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AssessmentClientBookings">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssessmentID" Type="int" />
+    <Property Name="BookingDate" Type="datetime" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="cDate" Type="datetime" />
+    <Property Name="Active" Type="int" />
+    <Property Name="OTP" Type="varchar" MaxLength="50" />
+    <Property Name="OTPConfirmed" Type="int" />
+    <Property Name="OTPDateSent" Type="datetime" />
+    <Property Name="OTPConfirmedDate" Type="datetime" />
+    <Property Name="Note" Type="text" />
+  </EntityType>
+  <EntityType Name="AssessmentDocuments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssessmentID" Type="int" />
+    <Property Name="DocumentURL" Type="varchar" MaxLength="250" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="Type" Type="varchar" MaxLength="254" />
+    <Property Name="uDate" Type="datetime" Nullable="false" />
+    <Property Name="FileName" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.AssessmentExpense' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AssessmentExpense">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssessmentID" Type="int" />
+    <Property Name="DocumentURL" Type="varchar(max)" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="Type" Type="varchar(max)" />
+    <Property Name="Reason" Type="varchar(max)" />
+    <Property Name="Total" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="uDate" Type="datetime" />
+    <Property Name="AssessmentExpenseTypeID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.AssessmentExpenseType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AssessmentExpenseType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="AssessmentImages">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssessmentID" Type="int" />
+    <Property Name="PictureURL" Type="varchar" MaxLength="350" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="Type" Type="varchar" MaxLength="350" />
+    <Property Name="uDate" Type="datetime" />
+    <Property Name="Location" Type="varchar" MaxLength="250" />
+    <Property Name="SurveyCategoryID" Type="int" />
+    <Property Name="Comment" Type="varchar" MaxLength="550" />
+    <Property Name="Title" Type="varchar" MaxLength="750" />
+  </EntityType>
+  <EntityType Name="AssessmentPolicyDetails">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BookingID" Type="int" />
+    <Property Name="ElementID" Type="int" />
+    <Property Name="Covered" Type="int" />
+    <Property Name="Sum" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="cDate" Type="datetime" />
+    <Property Name="AssessmentID" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="uDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AssessmentPolicyElements">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="AssessmentID" Type="int" />
+  </EntityType>
+  <EntityType Name="AssessmentPropertyDetails">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeOfResidenceID" Type="int" />
+    <Property Name="RoofConstructionID" Type="int" />
+    <Property Name="VicinityID" Type="int" />
+    <Property Name="ExtendoflandID" Type="int" />
+    <Property Name="BordersID" Type="int" />
+    <Property Name="AddressGeneralComments" Type="varchar(max)" />
+    <Property Name="ProvinceID" Type="int" />
+    <Property Name="TownID" Type="int" />
+    <Property Name="SuburbID" Type="int" />
+    <Property Name="PostalCodeID" Type="int" />
+    <Property Name="StreetNumber" Type="varchar(max)" />
+    <Property Name="StreetName" Type="varchar(max)" />
+    <Property Name="BuildingName" Type="varchar(max)" />
+    <Property Name="BuildingTypeID" Type="int" />
+    <Property Name="AccessControl" Type="int" />
+    <Property Name="ArmedResponse" Type="int" />
+    <Property Name="CCTV" Type="int" />
+    <Property Name="PerimeterWall" Type="int" />
+    <Property Name="ElectricFence" Type="int" />
+    <Property Name="BarbedWire" Type="int" />
+    <Property Name="Guards" Type="int" />
+    <Property Name="SecurityGate" Type="int" />
+    <Property Name="InternalSecurityBeams" Type="int" />
+    <Property Name="ExternalSecurityBeams" Type="int" />
+    <Property Name="AlarmSystem" Type="int" />
+    <Property Name="WindowSecurity" Type="int" />
+    <Property Name="SecurityGeneralComments" Type="varchar(max)" />
+    <Property Name="FireThatch" Type="int" />
+    <Property Name="FireWoodenStruct" Type="int" />
+    <Property Name="FireFighthingEquipment" Type="int" />
+    <Property Name="OtherFireRisk" Type="varchar(max)" />
+    <Property Name="AssessmentID" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="cDate" Type="datetime" />
+    <Property Name="Province" Type="varchar(max)" />
+    <Property Name="Town" Type="varchar(max)" />
+    <Property Name="Suburb" Type="varchar(max)" />
+    <Property Name="PostalCode" Type="varchar(max)" />
+    <Property Name="FireGeneralComments" Type="varchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.AssessmentQuote' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AssessmentQuote">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="VAT_Code" />
+      <PropertyRef Name="VAT_AMOUNT" />
+      <PropertyRef Name="CALC" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssessmentID" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="Quote" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="QuoteDate" Type="datetime" />
+    <Property Name="ValidUntillDate" Type="datetime" />
+    <Property Name="QuoteStatusID" Type="int" />
+    <Property Name="QuoteUserID" Type="int" />
+    <Property Name="QuoteStatusDate" Type="datetime" />
+    <Property Name="QuoteCardID" Type="int" />
+    <Property Name="ServiceDate" Type="datetime" />
+    <Property Name="Note" Type="text" />
+    <Property Name="CompanyID" Type="int" />
+    <Property Name="SurchargeFee" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="AssessorTotal" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="SpecialistTotal" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ProfitTotal" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="InitialQuoted" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="AssessmentRateCardID" Type="int" />
+    <Property Name="VAT_Code" Type="varchar(max)" Nullable="false" />
+    <Property Name="VAT_AMOUNT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CALC" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.AssessmentQuoteDecon' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AssessmentQuoteDecon">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuoteID" Type="int" />
+    <Property Name="UserTypeID" Type="int" />
+    <Property Name="Due" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="cDate" Type="datetime" />
+    <Property Name="Override" Type="int" />
+    <Property Name="UserID" Type="int" />
+  </EntityType>
+  <EntityType Name="AssessmentQuoteStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="AssessmentRateCard">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssessmentTypeID" Type="int" />
+    <Property Name="CompanyID" Type="int" />
+    <Property Name="ValuationFrom" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ValuationTo" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TotalFee" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DateFrom" Type="datetime" />
+    <Property Name="DateTo" Type="datetime" />
+    <Property Name="cDate" Type="datetime" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="InsurerRateCardID" Type="int" />
+  </EntityType>
+  <EntityType Name="AssessmentReference">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssessmentID" Type="int" />
+    <Property Name="Reference" Type="varchar(max)" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="cDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AssessmentRequirement">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AreaOfObservation" Type="varchar" MaxLength="250" />
+    <Property Name="DetailOfRequirement" Type="varchar" MaxLength="2500" />
+    <Property Name="RiskRatingID" Type="int" />
+    <Property Name="Deadline" Type="int" />
+    <Property Name="DeadlineDate" Type="datetime" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="AssessmentID" Type="int" />
+    <Property Name="cDate" Type="datetime" />
+    <Property Name="StatusID" Type="int" />
+    <Property Name="RiskTypeID" Type="int" />
+    <Property Name="PriorityID" Type="int" />
+    <Property Name="Comment" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="AssessmentRequirementDocuments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssessmentRequirementID" Type="int" />
+    <Property Name="DocumentURL" Type="varchar(max)" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="Type" Type="varchar(max)" />
+    <Property Name="cDate" Type="datetime" />
+    <Property Name="FileName" Type="varchar(max)" />
+    <Property Name="Title" Type="varchar(max)" />
+    <Property Name="Comment" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="AssessmentReview">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssessmentID" Type="int" />
+    <Property Name="SurveyCategoryID" Type="int" />
+    <Property Name="Message" Type="varchar(max)" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="sDate" Type="datetime" />
+    <Property Name="Response" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="AssessmentRiskClassificationFactor">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+    <Property Name="cDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AssessmentRiskClassificationSummary">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssessmentRiskFactorID" Type="int" />
+    <Property Name="AssessmentPolicyElementsID" Type="int" />
+    <Property Name="AssessmentRiskRatingID" Type="int" />
+    <Property Name="Reason" Type="varchar(max)" />
+    <Property Name="cDate" Type="datetime" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="AssessmentID" Type="int" />
+  </EntityType>
+  <EntityType Name="AssessmentRiskFactor">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+    <Property Name="cDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AssessmentRoom">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="BuildingID" Type="int" />
+    <Property Name="RoomTypeID" Type="int" />
+    <Property Name="Title" Type="varchar" MaxLength="250" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="cDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.AssessmentRoomType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AssessmentRoomType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+    <Property Name="cDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AssessmentStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="cDate" Type="datetime" />
+    <Property Name="UserTypeID" Type="int" />
+    <Property Name="Code" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.AssessmentSubCategory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AssessmentSubCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+    <Property Name="AssessmentCategoryID" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="cDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.AssessmentSurveyAssociations' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AssessmentSurveyAssociations">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssessmentTypeID" Type="int" />
+    <Property Name="SurveyID" Type="int" />
+    <Property Name="aDate" Type="datetime" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="Active" Type="int" />
+  </EntityType>
+  <EntityType Name="AssessmentSurveyJournal">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssessmentID" Type="int" />
+    <Property Name="SurveyID" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="Name" Type="varchar(max)" />
+    <Property Name="Value" Type="varchar(max)" />
+    <Property Name="cDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.AssessmentSurveys' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AssessmentSurveys">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssessmentID" Type="int" />
+    <Property Name="SurveyID" Type="int" />
+    <Property Name="cDate" Type="datetime" />
+    <Property Name="uDate" Type="datetime" />
+    <Property Name="AssessorUserID" Type="int" />
+    <Property Name="AssessmentSurveyStatusIS" Type="int" />
+    <Property Name="SurveyQuestionsJSON" Type="xml" />
+    <Property Name="SurveyAnswersJSON" Type="xml" />
+  </EntityType>
+  <EntityType Name="AssessmentSurveyStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
+    <Property Name="cDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.AssessmentTrack' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AssessmentTrack">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssessmentStatusID" Type="int" />
+    <Property Name="AssessmentTrackTypeID" Type="int" />
+    <Property Name="AssessmentID" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="cDate" Type="datetime" />
+    <Property Name="Longitude" Type="varchar" MaxLength="250" />
+    <Property Name="Latitude" Type="varchar" MaxLength="250" />
+    <Property Name="Note" Type="varchar(max)" />
+    <Property Name="Picture" Type="varchar(max)" />
+    <Property Name="Signature" Type="varchar(max)" />
+    <Property Name="PictureDescription" Type="varchar" MaxLength="500" />
+    <Property Name="SigneeName" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="AssessmentTrackType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+    <Property Name="cDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.AssessmentType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AssessmentType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+    <Property Name="AssessmentSubCategoryID" Type="int" />
+    <Property Name="SurveyJSON" Type="varchar(max)" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="cDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.AssessmentUserAllocation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AssessmentUserAllocation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssessmentID" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="AssessmentUserRoleID" Type="int" />
+    <Property Name="AssessmentUserAllocationStatusID" Type="int" />
+    <Property Name="Note" Type="varchar" MaxLength="250" />
+    <Property Name="ConfimedUserID" Type="int" />
+    <Property Name="ConfimedDate" Type="datetime" />
+    <Property Name="cDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.AssetCategory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AssetCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="RoomTypeID" Type="int" />
+    <Property Name="Valid" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.AssetMedia' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AssetMedia">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MediaTypeID" Type="int" />
+    <Property Name="Title" Type="varchar(max)" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="MediaURL" Type="varchar(max)" />
+    <Property Name="RoomID" Type="int" />
+    <Property Name="Type" Type="varchar(max)" />
+    <Property Name="uDate" Type="datetime" />
+    <Property Name="DocumentName" Type="varchar(max)" />
+    <Property Name="isCover" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="LevelID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.AssetMediaItems' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AssetMediaItems">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssetMedia" Type="int" />
+    <Property Name="AssetID" Type="int" />
+    <Property Name="DurationAt" Type="varchar(max)" />
+    <Property Name="uDate" Type="datetime" />
+    <Property Name="DocumentName" Type="varchar(max)" />
+    <Property Name="UserID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.AssetSubCategory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AssetSubCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssetCategoryID" Type="int" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="Valid" Type="int" />
+  </EntityType>
+  <EntityType Name="Bank">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+    <Property Name="BranchCode" Type="varchar" MaxLength="50" />
+    <Property Name="Logo" Type="varchar" MaxLength="250" />
+    <Property Name="cDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.Borders' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Borders">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Companies">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+    <Property Name="cDate" Type="datetime" />
+    <Property Name="uDate" Type="datetime" />
+    <Property Name="Code" Type="varchar" MaxLength="50" />
+    <Property Name="ContactPerson" Type="varchar" MaxLength="250" />
+    <Property Name="Email" Type="varchar" MaxLength="250" />
+    <Property Name="TellNo" Type="varchar" MaxLength="250" />
+    <Property Name="CellNo" Type="varchar" MaxLength="250" />
+    <Property Name="Address1" Type="varchar" MaxLength="250" />
+    <Property Name="Address2" Type="varchar" MaxLength="250" />
+    <Property Name="Town" Type="varchar" MaxLength="250" />
+    <Property Name="PostalCode" Type="varchar" MaxLength="250" />
+    <Property Name="Longitude" Type="varchar" MaxLength="250" />
+    <Property Name="Lattitude" Type="varchar" MaxLength="250" />
+    <Property Name="Country" Type="varchar" MaxLength="250" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="CompanyTypeID" Type="int" />
+    <Property Name="RegistrationNumber" Type="varchar(max)" />
+    <Property Name="Rating" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="VATRegNo" Type="varchar" MaxLength="250" />
+    <Property Name="AssessorMaxPolicyValue" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="OrganizationID" Type="int" />
+    <Property Name="BankName" Type="varchar(max)" />
+    <Property Name="BankAccountType" Type="varchar(max)" />
+    <Property Name="BankAccountNumber" Type="varchar(max)" />
+    <Property Name="BankAccountNotes" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="CompanyType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="CPS_Statement">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CISNumber" Type="varchar(max)" />
+    <Property Name="ProfileNumber" Type="varchar(max)" />
+    <Property Name="Product" Type="varchar(max)" />
+    <Property Name="InstanceNumber" Type="varchar(max)" />
+    <Property Name="InstanceName" Type="varchar(max)" />
+    <Property Name="Date" Type="varchar(max)" />
+    <Property Name="TransactionKey" Type="varchar(max)" />
+    <Property Name="ProcessKey" Type="varchar(max)" />
+    <Property Name="ResendKey" Type="varchar(max)" />
+    <Property Name="DestinationKey" Type="varchar(max)" />
+    <Property Name="TransactionListNumber" Type="varchar(max)" />
+    <Property Name="StatementLineNumber" Type="varchar(max)" />
+    <Property Name="Account" Type="varchar(max)" />
+    <Property Name="TransactionCode" Type="varchar(max)" />
+    <Property Name="SubTransactionCode" Type="varchar(max)" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DebitCredit" Type="varchar(max)" />
+    <Property Name="TransactionDate" Type="varchar(max)" />
+    <Property Name="AccountAvailableBalance" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="UserRef" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="CustodiansPerOrganization">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="OrganizationID" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="cDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Devices">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="cDate" Type="datetime" />
+    <Property Name="IMEI" Type="varchar" MaxLength="250" />
+    <Property Name="Code" Type="varchar" MaxLength="250" />
+    <Property Name="AndroidDeviceID" Type="varchar" MaxLength="250" />
+    <Property Name="AppleDeviceID" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="District">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Province" Type="varchar" MaxLength="250" />
+    <Property Name="Town" Type="varchar" MaxLength="250" />
+    <Property Name="Suburb" Type="varchar" MaxLength="250" />
+    <Property Name="PostalCode" Type="varchar" MaxLength="250" />
+    <Property Name="cDate" Type="datetime" />
+    <Property Name="CountryCode" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.ExtendOfLand' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ExtendOfLand">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="GeoStamp">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="Longitude" Type="varchar" MaxLength="250" />
+    <Property Name="Latitude" Type="varchar" MaxLength="250" />
+    <Property Name="cDate" Type="datetime" />
+    <Property Name="DeviceID" Type="int" />
+    <Property Name="ApplicationID" Type="int" />
+    <Property Name="Speed" Type="varchar" MaxLength="250" />
+    <Property Name="Altitude" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="IdentityType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="IndustrySector">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+    <Property Name="cDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="IndustrySectorClass">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IndustrySubSectorID" Type="int" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="IndustrySubSector">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IndustrySectorID" Type="int" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+    <Property Name="cDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Invoice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillingEntityID" Type="int" />
+    <Property Name="BillingEntityTypeID" Type="int" />
+    <Property Name="FromAccountID" Type="int" />
+    <Property Name="ToAccountID" Type="int" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Balance" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="cDate" Type="datetime" />
+    <Property Name="Reference" Type="varchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.lh_OccupationPermission' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="lh_OccupationPermission">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="OccupationID" />
+      <PropertyRef Name="ModuleID" />
+      <PropertyRef Name="FeatureID" />
+      <PropertyRef Name="StateID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OccupationID" Type="int" Nullable="false" />
+    <Property Name="ModuleID" Type="int" Nullable="false" />
+    <Property Name="FeatureID" Type="int" Nullable="false" />
+    <Property Name="StateID" Type="int" Nullable="false" />
+    <Property Name="cDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Notifications">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NotificationTypeID" Type="int" />
+    <Property Name="Title" Type="varchar" MaxLength="250" />
+    <Property Name="Message" Type="varchar(max)" />
+    <Property Name="isHTML" Type="int" />
+    <Property Name="cDate" Type="datetime" />
+    <Property Name="nDate" Type="datetime" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="NotificationStatusID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.NotificationStatus' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="NotificationStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+    <Property Name="cDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="NotificationType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+    <Property Name="cDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.Organization' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Organization">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" />
+    <Property Name="DistrictID" Type="int" />
+    <Property Name="Address1" Type="varchar(max)" />
+    <Property Name="Address2" Type="varchar(max)" />
+    <Property Name="Tell" Type="varchar(max)" />
+    <Property Name="Cell" Type="varchar(max)" />
+    <Property Name="Email" Type="varchar(max)" />
+    <Property Name="RegNo" Type="varchar(max)" />
+    <Property Name="VatNo" Type="varchar(max)" />
+    <Property Name="CompanyID" Type="int" />
+    <Property Name="cDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.QuoteCard' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="QuoteCard">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="250" />
+    <Property Name="cDate" Type="datetime" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="Active" Type="int" />
+    <Property Name="uDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.QuoteCardSplit' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="QuoteCardSplit">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuoteCardID" Type="int" />
+    <Property Name="UserTypeID" Type="int" />
+    <Property Name="SharePercent" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Active" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="cDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="RiskType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="cDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.RoofConstruction' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="RoofConstruction">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Sessions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="IPAddress" Type="varchar" MaxLength="250" />
+    <Property Name="sDate" Type="datetime" />
+    <Property Name="SocketID" Type="int" />
+    <Property Name="Active" Type="int" />
+    <Property Name="Email" Type="varchar" MaxLength="250" />
+    <Property Name="Password" Type="varchar" MaxLength="250" />
+    <Property Name="Pin" Type="varchar" MaxLength="250" />
+    <Property Name="Token" Type="varchar" MaxLength="50" />
+    <Property Name="ApplicationID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.Survey' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Survey">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="250" />
+    <Property Name="Description" Type="text" />
+    <Property Name="cDate" Type="datetime" />
+    <Property Name="Active" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="JSON" Type="xml" />
+  </EntityType>
+  <EntityType Name="SurveyCategories">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="550" />
+    <Property Name="SurveyID" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Transactions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FromAccountID" Type="int" />
+    <Property Name="ToAccountID" Type="int" />
+    <Property Name="FromReference" Type="varchar" MaxLength="250" />
+    <Property Name="ToReference" Type="varchar" MaxLength="250" />
+    <Property Name="TransactionStatusID" Type="int" />
+    <Property Name="TransactionTypeID" Type="int" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="InvoiceID" Type="int" />
+    <Property Name="CreditNoteID" Type="int" />
+    <Property Name="cDate" Type="datetime" />
+    <Property Name="tDate" Type="datetime" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="Balance" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="TransactionStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
+    <Property Name="cDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TransactionType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+    <Property Name="cDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.TypeOfResidence' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TypeOfResidence">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.UOM' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="UOM">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Pin" Type="varchar" MaxLength="10" />
+    <Property Name="CompanyID" Type="int" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="FirstName" Type="varchar" MaxLength="250" />
+    <Property Name="LastName" Type="varchar" MaxLength="250" />
+    <Property Name="Email" Type="varchar" MaxLength="250" />
+    <Property Name="Cellphone" Type="varchar" MaxLength="250" />
+    <Property Name="IdentityNumber" Type="varchar" MaxLength="250" />
+    <Property Name="UserTypeID" Type="int" />
+    <Property Name="Picture" Type="varchar(max)" />
+    <Property Name="Wallpaper" Type="varchar(max)" />
+    <Property Name="DateOfBirth" Type="datetime" />
+    <Property Name="Active" Type="int" />
+    <Property Name="IdentityTypeID" Type="int" />
+    <Property Name="FirebaseID" Type="varchar" MaxLength="250" />
+    <Property Name="FirebaseMessengerID" Type="varchar" MaxLength="250" />
+    <Property Name="signature" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mitig8.dbo.Vicinity' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Vicinity">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Wallet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="Active" Type="int" />
+    <Property Name="WalletStatusID" Type="int" />
+    <Property Name="cDate" Type="datetime" />
+    <Property Name="ProofOfIdentification" Type="varchar(max)" />
+    <Property Name="ProofOfAddress" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="WalletAccounts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccountNumber" Type="varchar" MaxLength="250" />
+    <Property Name="AccountTypeID" Type="int" />
+    <Property Name="BankID" Type="int" />
+    <Property Name="Balance" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="Active" Type="int" />
+    <Property Name="WalletID" Type="int" />
+    <Property Name="cDate" Type="datetime" />
+    <Property Name="Pending" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="WalletAccountType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+    <Property Name="cDate" Type="datetime" />
+  </EntityType>
+  <Function Name="addAssessment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="InsurerName" Type="varchar" Mode="In" />
+    <Parameter Name="InsurerContactPerson" Type="varchar" Mode="In" />
+    <Parameter Name="InsurerContactNumber" Type="varchar" Mode="In" />
+    <Parameter Name="InsurancePolicyNumber" Type="varchar" Mode="In" />
+    <Parameter Name="BrokerName" Type="varchar" Mode="In" />
+    <Parameter Name="BrokerContactNumber" Type="varchar" Mode="In" />
+    <Parameter Name="InsuredName" Type="varchar" Mode="In" />
+    <Parameter Name="InsuredContactNumber" Type="varchar" Mode="In" />
+    <Parameter Name="InsuredIndustrySector" Type="varchar" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="cDate" Type="datetime" Mode="In" />
+    <Parameter Name="AssessmentTypeID" Type="int" Mode="In" />
+    <Parameter Name="InsuredEmailAddress" Type="varchar" Mode="In" />
+    <Parameter Name="InsurerEmailAddress" Type="varchar" Mode="In" />
+    <Parameter Name="BrokerEmailAddress" Type="varchar" Mode="In" />
+    <Parameter Name="NewPolicy" Type="int" Mode="In" />
+    <Parameter Name="IndustrySectorID" Type="int" Mode="In" />
+    <Parameter Name="IndustrySubSectorID" Type="int" Mode="In" />
+    <Parameter Name="IndustrySectorClassID" Type="int" Mode="In" />
+    <Parameter Name="isInternal" Type="int" Mode="In" />
+  </Function>
+  <Function Name="addAssessmentAddress" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="DistrictID" Type="int" Mode="In" />
+    <Parameter Name="StreetNumber" Type="varchar" Mode="In" />
+    <Parameter Name="StreetName" Type="varchar" Mode="In" />
+    <Parameter Name="Unit" Type="varchar" Mode="In" />
+    <Parameter Name="BuildingName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="addAssessmentAttachments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="DocumentURL" Type="varchar" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="Type" Type="varchar" Mode="In" />
+    <Parameter Name="SurveyCategoryID" Type="int" Mode="In" />
+    <Parameter Name="Title" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="AddAssessmentBuilding" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Description" Type="varchar(max)" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="Title" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="addAssessmentBuildingValuation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ClientName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="ClientContactNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="ClientEmailAddress" Type="varchar(max)" Mode="In" />
+    <Parameter Name="PolicyNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="ClaimNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="InsurerName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="InsurerContactPerson" Type="varchar(max)" Mode="In" />
+    <Parameter Name="InsurerConactNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="InsurerEmail" Type="varchar(max)" Mode="In" />
+    <Parameter Name="InsurerFunction" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BrokerName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BrokerContactPerson" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BrokerContactNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BrokerEmail" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BrokerFunction" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Province" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Town" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Suburb" Type="varchar(max)" Mode="In" />
+    <Parameter Name="PostalCode" Type="varchar(max)" Mode="In" />
+    <Parameter Name="StreetNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="StreetName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BuildingName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BuildingTypeID" Type="int" Mode="In" />
+    <Parameter Name="TypeOfResidenceID" Type="int" Mode="In" />
+    <Parameter Name="RoofConstructionID" Type="int" Mode="In" />
+    <Parameter Name="VicinityID" Type="int" Mode="In" />
+    <Parameter Name="ExtentOfLandID" Type="int" Mode="In" />
+    <Parameter Name="BordersID" Type="int" Mode="In" />
+    <Parameter Name="AddressDetailsGeneralComments" Type="varchar(max)" Mode="In" />
+    <Parameter Name="AccessControl" Type="int" Mode="In" />
+    <Parameter Name="ArmedResponse" Type="int" Mode="In" />
+    <Parameter Name="CCTV" Type="int" Mode="In" />
+    <Parameter Name="PerimeterWall" Type="int" Mode="In" />
+    <Parameter Name="ElectricFence" Type="int" Mode="In" />
+    <Parameter Name="BarbedWire" Type="int" Mode="In" />
+    <Parameter Name="GuardsOnPatrol" Type="int" Mode="In" />
+    <Parameter Name="SecurityGates" Type="int" Mode="In" />
+    <Parameter Name="InternalSecurityBeams" Type="int" Mode="In" />
+    <Parameter Name="ExternalSecurityBeams" Type="int" Mode="In" />
+    <Parameter Name="AlarmSystem" Type="int" Mode="In" />
+    <Parameter Name="WindowSecurity" Type="int" Mode="In" />
+    <Parameter Name="SecurityGeneralComments" Type="varchar(max)" Mode="In" />
+    <Parameter Name="FireThatchStructure" Type="int" Mode="In" />
+    <Parameter Name="FireWoodenStructure" Type="int" Mode="In" />
+    <Parameter Name="FireFightingEquipment" Type="int" Mode="In" />
+    <Parameter Name="FireOtherRisk" Type="varchar(max)" Mode="In" />
+    <Parameter Name="FireGeneralComments" Type="varchar(max)" Mode="In" />
+    <Parameter Name="TotalValuationAmmount" Type="decimal" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="addAssessmentDocument" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="FileURL" Type="varchar" Mode="In" />
+    <Parameter Name="FileName" Type="varchar" Mode="In" />
+    <Parameter Name="Type" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="addAssessmentExpense" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="DocumentURL" Type="varchar(max)" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="Type" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Reason" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Total" Type="decimal" Mode="In" />
+    <Parameter Name="ExpenseTypeID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="addAssessmentImages" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="PictureURL" Type="varchar" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="Type" Type="varchar" Mode="In" />
+    <Parameter Name="Location" Type="varchar(max)" Mode="In" />
+    <Parameter Name="SurveyCategoryID" Type="int" Mode="In" />
+    <Parameter Name="Comment" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="addAssessmentInvoice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="addAssessmentInvoiceInsurer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="addAssessmentMovableAssetsValuation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ClientName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="ClientContactNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="ClientEmailAddress" Type="varchar(max)" Mode="In" />
+    <Parameter Name="PolicyNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="ClaimNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="InsurerName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="InsurerContactPerson" Type="varchar(max)" Mode="In" />
+    <Parameter Name="InsurerConactNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="InsurerEmail" Type="varchar(max)" Mode="In" />
+    <Parameter Name="InsurerFunction" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BrokerName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BrokerContactPerson" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BrokerContactNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BrokerEmail" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BrokerFunction" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Province" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Town" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Suburb" Type="varchar(max)" Mode="In" />
+    <Parameter Name="PostalCode" Type="varchar(max)" Mode="In" />
+    <Parameter Name="StreetNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="StreetName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BuildingName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BuildingTypeID" Type="int" Mode="In" />
+    <Parameter Name="TypeOfResidenceID" Type="int" Mode="In" />
+    <Parameter Name="RoofConstructionID" Type="int" Mode="In" />
+    <Parameter Name="VicinityID" Type="int" Mode="In" />
+    <Parameter Name="ExtentOfLandID" Type="int" Mode="In" />
+    <Parameter Name="BordersID" Type="int" Mode="In" />
+    <Parameter Name="AddressDetailsGeneralComments" Type="varchar(max)" Mode="In" />
+    <Parameter Name="AccessControl" Type="int" Mode="In" />
+    <Parameter Name="ArmedResponse" Type="int" Mode="In" />
+    <Parameter Name="CCTV" Type="int" Mode="In" />
+    <Parameter Name="PerimeterWall" Type="int" Mode="In" />
+    <Parameter Name="ElectricFence" Type="int" Mode="In" />
+    <Parameter Name="BarbedWire" Type="int" Mode="In" />
+    <Parameter Name="GuardsOnPatrol" Type="int" Mode="In" />
+    <Parameter Name="SecurityGates" Type="int" Mode="In" />
+    <Parameter Name="InternalSecurityBeams" Type="int" Mode="In" />
+    <Parameter Name="ExternalSecurityBeams" Type="int" Mode="In" />
+    <Parameter Name="AlarmSystem" Type="int" Mode="In" />
+    <Parameter Name="WindowSecurity" Type="int" Mode="In" />
+    <Parameter Name="SecurityGeneralComments" Type="varchar(max)" Mode="In" />
+    <Parameter Name="FireThatchStructure" Type="int" Mode="In" />
+    <Parameter Name="FireWoodenStructure" Type="int" Mode="In" />
+    <Parameter Name="FireFightingEquipment" Type="int" Mode="In" />
+    <Parameter Name="FireOtherRisk" Type="varchar(max)" Mode="In" />
+    <Parameter Name="FireGeneralComments" Type="varchar(max)" Mode="In" />
+    <Parameter Name="TotalValuationAmmount" Type="decimal" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="addAssessmentPolicyDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ElementID" Type="int" Mode="In" />
+    <Parameter Name="Covered" Type="int" Mode="In" />
+    <Parameter Name="Sum" Type="decimal" Mode="In" />
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="addAssessmentQuote" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="Amount" Type="decimal" Mode="In" />
+    <Parameter Name="ServiceDate" Type="datetime" Mode="In" />
+    <Parameter Name="Note" Type="varchar(max)" Mode="In" />
+    <Parameter Name="CompanyID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="addAssessmentRateCard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentTypeID" Type="int" Mode="In" />
+    <Parameter Name="CompanyID" Type="int" Mode="In" />
+    <Parameter Name="ValuationFrom" Type="decimal" Mode="In" />
+    <Parameter Name="ValudationTo" Type="decimal" Mode="In" />
+    <Parameter Name="TotalFee" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="addAssessmentRequirement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AreaOfObservation" Type="varchar" Mode="In" />
+    <Parameter Name="DetailOfRequirement" Type="varchar" Mode="In" />
+    <Parameter Name="RiskRatingID" Type="int" Mode="In" />
+    <Parameter Name="Deadline" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="RiskTypeID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="addAssessmentRequirementDocuments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentRequirementID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="FileURL" Type="varchar" Mode="In" />
+    <Parameter Name="FileName" Type="varchar" Mode="In" />
+    <Parameter Name="Type" Type="varchar" Mode="In" />
+    <Parameter Name="Title" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Comment" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="addAssessmentReview" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="SurveyCategoryID" Type="int" Mode="In" />
+    <Parameter Name="Message" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="addAssessmentRiskClassificationSummary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentRiskFactorID" Type="int" Mode="In" />
+    <Parameter Name="AssessmentRistRatingID" Type="int" Mode="In" />
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="Reason" Type="varchar(max)" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AddAssessmentRoom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BuildingID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="Title" Type="varchar(max)" Mode="In" />
+    <Parameter Name="RoomTypeID" Type="int" Mode="In" />
+    <Parameter Name="Description" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="addAssessmentSurveyJournal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="SurveyID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Value" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="addAssessmentTrack" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentStatusID" Type="int" Mode="In" />
+    <Parameter Name="AssessmentTrackTypeID" Type="int" Mode="In" />
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="Longitude" Type="varchar" Mode="In" />
+    <Parameter Name="Latitude" Type="varchar" Mode="In" />
+    <Parameter Name="Note" Type="varchar" Mode="In" />
+    <Parameter Name="Picture" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Signature" Type="varchar(max)" Mode="In" />
+    <Parameter Name="PictureDescription" Type="varchar" Mode="In" />
+    <Parameter Name="SigneeName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="addAsset" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="RoomID" Type="int" Mode="In" />
+    <Parameter Name="CategoryID" Type="int" Mode="In" />
+    <Parameter Name="SubcategoryID" Type="int" Mode="In" />
+    <Parameter Name="Manufacturer" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Supplier" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Title" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Description" Type="varchar(max)" Mode="In" />
+    <Parameter Name="SKU" Type="varchar(max)" Mode="In" />
+    <Parameter Name="QTY" Type="int" Mode="In" />
+    <Parameter Name="UOM_ID" Type="int" Mode="In" />
+    <Parameter Name="Measurement" Type="varchar(max)" Mode="In" />
+    <Parameter Name="AssetPrice" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="addAssetCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Category" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="addAssetMedia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MediaTypeID" Type="int" Mode="In" />
+    <Parameter Name="Title" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Description" Type="varchar(max)" Mode="In" />
+    <Parameter Name="MediaURL" Type="varchar(max)" Mode="In" />
+    <Parameter Name="RoomID" Type="int" Mode="In" />
+    <Parameter Name="Type" Type="varchar(max)" Mode="In" />
+    <Parameter Name="DocumentName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="isCover" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="LevelID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="addAssetMediaItems" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssetMediaID" Type="int" Mode="In" />
+    <Parameter Name="AssetID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="DurationAt" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="addAssetSubCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Category" Type="varchar(max)" Mode="In" />
+    <Parameter Name="SubCategory" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="addCPS_StatementLine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CISNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="ProfileNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Product" Type="varchar(max)" Mode="In" />
+    <Parameter Name="InstanceNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="InstanceName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Date" Type="varchar(max)" Mode="In" />
+    <Parameter Name="TransactionKey" Type="varchar(max)" Mode="In" />
+    <Parameter Name="ProcessKey" Type="varchar(max)" Mode="In" />
+    <Parameter Name="ResendKey" Type="varchar(max)" Mode="In" />
+    <Parameter Name="DestinationKey" Type="varchar(max)" Mode="In" />
+    <Parameter Name="TransactionListNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="StatementLineNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Account" Type="varchar(max)" Mode="In" />
+    <Parameter Name="TransactionCode" Type="varchar(max)" Mode="In" />
+    <Parameter Name="SubTransactionCode" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Amount" Type="decimal" Mode="In" />
+    <Parameter Name="DebitCredit" Type="varchar(max)" Mode="In" />
+    <Parameter Name="TransactionDate" Type="varchar(max)" Mode="In" />
+    <Parameter Name="AccountAvailableBalance" Type="decimal" Mode="In" />
+    <Parameter Name="UserRef" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="addFileUploadAssessment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="addIndustrySectorClassBulk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IndustrySector" Type="varchar" Mode="In" />
+    <Parameter Name="Description" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="addIndustrySubSectorBulk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IndustrySector" Type="varchar" Mode="In" />
+    <Parameter Name="Description" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="addRegisterUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FirstName" Type="varchar" Mode="In" />
+    <Parameter Name="LastName" Type="varchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Cellphone" Type="varchar" Mode="In" />
+    <Parameter Name="IdentityNumber" Type="varchar" Mode="In" />
+    <Parameter Name="RegionID" Type="int" Mode="In" />
+    <Parameter Name="Address1" Type="varchar" Mode="In" />
+    <Parameter Name="Address2" Type="varchar" Mode="In" />
+    <Parameter Name="Password" Type="varchar" Mode="In" />
+    <Parameter Name="CompanyName" Type="varchar" Mode="In" />
+    <Parameter Name="CompanyContactNumber" Type="varchar" Mode="In" />
+    <Parameter Name="CompanyRegistrationNumber" Type="varchar" Mode="In" />
+    <Parameter Name="ProfileTypeID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="addRegisterUser1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FirstName" Type="varchar" Mode="In" />
+    <Parameter Name="LastName" Type="varchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Cellphone" Type="varchar" Mode="In" />
+    <Parameter Name="IdentityNumber" Type="varchar" Mode="In" />
+    <Parameter Name="RegionID" Type="int" Mode="In" />
+    <Parameter Name="Address1" Type="varchar" Mode="In" />
+    <Parameter Name="Address2" Type="varchar" Mode="In" />
+    <Parameter Name="Password" Type="varchar" Mode="In" />
+    <Parameter Name="CompanyName" Type="varchar" Mode="In" />
+    <Parameter Name="CompanyContactNumber" Type="varchar" Mode="In" />
+    <Parameter Name="CompanyRegistrationNumber" Type="varchar" Mode="In" />
+    <Parameter Name="ProfileTypeID" Type="int" Mode="In" />
+    <Parameter Name="CompanyVATRegNo" Type="varchar" Mode="In" />
+    <Parameter Name="Signature" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="addWalletAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AccountTypeID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="BankID" Type="int" Mode="In" />
+    <Parameter Name="WalletID" Type="int" Mode="In" />
+    <Parameter Name="AccountNumber" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="appointMoovableAssetsValuator" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="QuoteID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AssessmentRequestQuote" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="cancelAssessment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="cancelAutoCapture" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="chkAutoCapture" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="confirmMoveableAssetsQuote" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="QuoteStatusID" Type="int" Mode="In" />
+    <Parameter Name="QuoteID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="creditAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Reference" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Amount" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="danger_reallocateAssessment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="OldCompanyID" Type="int" Mode="In" />
+    <Parameter Name="NewCompanyID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="deleteAssessmentBuilding" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="AssessmentBuildingID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="deleteAssessmentExpense" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ExpenseID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="deleteAssessmentRequirement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RequirementID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="deleteAssessmentRoom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="AssessmentRoomID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="deleteAsset" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentAssetID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="deleteAssetMedia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssetMediaID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="delInvoice_AdminTool" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AccountNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="InvoiceID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DuplicateAssessment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DuplicateAssessmentWithAddress" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="DistrictID" Type="int" Mode="In" />
+    <Parameter Name="StreetNumber" Type="varchar" Mode="In" />
+    <Parameter Name="StreetName" Type="varchar" Mode="In" />
+    <Parameter Name="Unit" Type="varchar" Mode="In" />
+    <Parameter Name="BuildingName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="getAssesmentUsersForAssociation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentAddress" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AddressID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentAddresses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentAlbumDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="SurveyCategoryID" Type="int" Mode="In" />
+    <Parameter Name="Location" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentAssessmentTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentSubCategoryID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentAssetsList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RoomID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentAssetValuationBuildings" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentAssetValuationRooms" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentAssignedUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentAttachments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentAttachmentsView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentAutocompleteInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentBuilding" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BuildingID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentBuildings" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentBuildingValuation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmnetID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="getAssessmentDocuments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentExpense" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentExpenses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentExpenseType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="getAssessmentFinancialRiskHTML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentGallaryDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentGeneralInformation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentImage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentImageID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentImages" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentMovableAssetsValuation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmnetID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentMovableAssetsValuationPropertyDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentMoveableAssetMediaItems" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MediaItemID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentMoveableAssetsQuotes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentPolicyDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentQuotes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentReference" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentRequirementComment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentRequirementID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentRequirementDocuments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentRequirementID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentRequirements" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentReview" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentRiskClassificationFactor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="getAssessmentRoom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RoomID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentRooms" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentRoomsBuilding" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BuilingID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentRoomType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="getAssessments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentsAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentsAll1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentsAllActive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentsAllArchive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentsAllStats" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentSpecialRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentStatusID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentSubCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentCategoryID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentSurvey" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentSurveyDemo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="getAssessmentSurveys" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentTracks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentTracksHTML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentValuationsAllActive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssessmentValuationsAllArchive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssetCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RoomID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssetMedia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssetMediaID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssetMediaHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RoomID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RoomID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssetSubCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CategoryID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAssignUserSelectedDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getBillingStats" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getBillingStats_AdminTool" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getBillingTransactions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getBillingTransactions_AdminTool" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getBorders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="getCompanies" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="getCompanyDetailRaw" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getCompanyEmployees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetCompanyType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="getCompanyUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getdAssessmentBooking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getDetailsHomeGlobal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="getDistrictID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Province" Type="varchar" Mode="In" />
+    <Parameter Name="Suburb" Type="varchar" Mode="In" />
+    <Parameter Name="Town" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="getExtentOfLand" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="getIndustrySector" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="getIndustrySectorClass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IndustrySubSector" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getIndustrySubSector" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IndustrySectorID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getInvoices" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getInvoices_AdminTool" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getNotificationsGeneralUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="NotificationStatusID" Type="int" Mode="In" />
+    <Parameter Name="DateFrom" Type="datetime" Mode="In" />
+    <Parameter Name="DateTo" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="getProvinces" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CountryCode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="getRegionID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Province" Type="varchar" Mode="In" />
+    <Parameter Name="Suburb" Type="varchar" Mode="In" />
+    <Parameter Name="Town" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="getRequirementAndRecommendatio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RRID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getRiskClassificationSummaries" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getRiskClassificationSummaryRaw" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getRiskManagement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getRiskManagementRequirementsAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getRiskManagementTotals" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getRiskTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="getRoofConstruction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="getRoomCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RoomID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getSessionDetailsToken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Token" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="getSessionDetailsTokenBlind" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Token" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="getSessionToken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Email" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Password" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Pin" Type="int" Mode="In" />
+    <Parameter Name="ApplicationID" Type="int" Mode="In" />
+    <Parameter Name="IPAddress" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="getSessionTokenBlind" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationID" Type="int" Mode="In" />
+    <Parameter Name="IPAddress" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="getSuburbs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Town" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="getSurveyCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SurveyID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getSurveyJournalBackup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SurveyID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getTowns" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Province" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="getTypeOfResidence" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="getUOM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="getUserDetailsByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getUserDetailsHome" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="CompanyID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getUserProfileAssessmentHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DateFrom" Type="datetime" Mode="In" />
+    <Parameter Name="DateTo" Type="datetime" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getUserProfileDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getUserWalletAccounts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getVicinity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="getWalletAccountHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="WalletAccountID" Type="int" Mode="In" />
+    <Parameter Name="DateFrom" Type="datetime" Mode="In" />
+    <Parameter Name="DateTo" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="getWalletAccounts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="isCustodian" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Mobile_getAssessments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Notify" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FromUserID" Type="int" Mode="In" />
+    <Parameter Name="ToUserID" Type="int" Mode="In" />
+    <Parameter Name="Title" Type="varchar" Mode="In" />
+    <Parameter Name="Body" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="payInvoices" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AccountID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PDF_ExecutiveReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PDF_getAssessmentDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PDF_getAssessmentMoveableAssetsValuation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PDF_getAssessmentQuoteHTML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="QuoteID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PDF_getInvoice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="VAT" Type="int" Mode="In" />
+    <Parameter Name="Charge" Type="decimal" Mode="In" />
+    <Parameter Name="FromID" Type="int" Mode="In" />
+    <Parameter Name="ToID" Type="int" Mode="In" />
+    <Parameter Name="InvoiceID" Type="int" Mode="In" />
+    <Parameter Name="LineItemTitle" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="PDF_getInvoice_Assessor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PDF_getInvoice_Insurer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PDF_RiskReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="postAddDistrict" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Province" Type="varchar" Mode="In" />
+    <Parameter Name="Town" Type="varchar" Mode="In" />
+    <Parameter Name="Suburb" Type="varchar" Mode="In" />
+    <Parameter Name="PostalCode" Type="varchar" Mode="In" />
+    <Parameter Name="CountryCode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="postAuthLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Password" Type="varchar" Mode="In" />
+    <Parameter Name="Pin" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="postAuthRegister" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Pin" Type="varchar" Mode="In" />
+    <Parameter Name="CompanyID" Type="int" Mode="In" />
+    <Parameter Name="Password" Type="varchar" Mode="In" />
+    <Parameter Name="FirstName" Type="varchar" Mode="In" />
+    <Parameter Name="LastName" Type="varchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Cellphone" Type="varchar" Mode="In" />
+    <Parameter Name="IdentityNumber" Type="varchar" Mode="In" />
+    <Parameter Name="UserTypeID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="repAssessmentRisk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="DateFrom" Type="datetime" Mode="In" />
+    <Parameter Name="DateTo" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="reverseInvoiceTransaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TransactionID" Type="int" Mode="In" />
+    <Parameter Name="PayInvoices" Type="int" Mode="In" />
+  </Function>
+  <Function Name="select___" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="select * ">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sendMail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Subject" Type="varchar(max)" Mode="In" />
+    <Parameter Name="HTML" Type="varchar(max)" Mode="In" />
+    <Parameter Name="To" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="setAssessmentSurvey" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="Survey" Type="xml" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="upd_EML_MPL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="EML" Type="decimal" Mode="In" />
+    <Parameter Name="MPL" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="updAssessmentAddress" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AddressID" Type="int" Mode="In" />
+    <Parameter Name="DistrictID" Type="int" Mode="In" />
+    <Parameter Name="StreetNumber" Type="varchar" Mode="In" />
+    <Parameter Name="StreetName" Type="varchar" Mode="In" />
+    <Parameter Name="Unit" Type="varchar" Mode="In" />
+    <Parameter Name="BuildingName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="updAssessmentAlbumDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="CurrentSurveyCategoryID" Type="int" Mode="In" />
+    <Parameter Name="SurveyCategoryID" Type="int" Mode="In" />
+    <Parameter Name="CurrentLocation" Type="varchar" Mode="In" />
+    <Parameter Name="Location" Type="varchar" Mode="In" />
+    <Parameter Name="Comment" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="updAssessmentBooking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="BookingDate" Type="datetime" Mode="In" />
+    <Parameter Name="BookingConfirmedBy" Type="varchar" Mode="In" />
+    <Parameter Name="BookingConfirmedByContact" Type="varchar" Mode="In" />
+    <Parameter Name="BookingNote" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="updAssessmentBuilding" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BuildingID" Type="int" Mode="In" />
+    <Parameter Name="Title" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Description" Type="varchar(max)" Mode="In" />
+    <Parameter Name="RoomTypeID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updAssessmentBuildingValuation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="ClientName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="ClientContactNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="ClientEmailAddress" Type="varchar(max)" Mode="In" />
+    <Parameter Name="PolicyNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="ClaimNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="InsurerName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="InsurerContactPerson" Type="varchar(max)" Mode="In" />
+    <Parameter Name="InsurerConactNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="InsurerEmail" Type="varchar(max)" Mode="In" />
+    <Parameter Name="InsurerFunction" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BrokerName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BrokerContactPerson" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BrokerContactNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BrokerEmail" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BrokerFunction" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Province" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Town" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Suburb" Type="varchar(max)" Mode="In" />
+    <Parameter Name="PostalCode" Type="varchar(max)" Mode="In" />
+    <Parameter Name="StreetNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="StreetName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BuildingName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="TotalValuationAmmount" Type="decimal" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updAssessmentBuildingValuationPropertyDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="TypeOfResidenceID" Type="int" Mode="In" />
+    <Parameter Name="RoofConstructionID" Type="int" Mode="In" />
+    <Parameter Name="VicinityID" Type="int" Mode="In" />
+    <Parameter Name="ExtentOfLandID" Type="int" Mode="In" />
+    <Parameter Name="BordersID" Type="int" Mode="In" />
+    <Parameter Name="AddressDetailsGeneralComments" Type="varchar(max)" Mode="In" />
+    <Parameter Name="AccessControl" Type="int" Mode="In" />
+    <Parameter Name="ArmedResponse" Type="int" Mode="In" />
+    <Parameter Name="CCTV" Type="int" Mode="In" />
+    <Parameter Name="PerimeterWall" Type="int" Mode="In" />
+    <Parameter Name="ElectricFence" Type="int" Mode="In" />
+    <Parameter Name="BarbedWire" Type="int" Mode="In" />
+    <Parameter Name="GuardsOnPatrol" Type="int" Mode="In" />
+    <Parameter Name="SecurityGates" Type="int" Mode="In" />
+    <Parameter Name="InternalSecurityBeams" Type="int" Mode="In" />
+    <Parameter Name="ExternalSecurityBeams" Type="int" Mode="In" />
+    <Parameter Name="AlarmSystem" Type="int" Mode="In" />
+    <Parameter Name="WindowSecurity" Type="int" Mode="In" />
+    <Parameter Name="SecurityGeneralComments" Type="varchar(max)" Mode="In" />
+    <Parameter Name="FireThatchStructure" Type="int" Mode="In" />
+    <Parameter Name="FireWoodenStructure" Type="int" Mode="In" />
+    <Parameter Name="FireFightingEquipment" Type="int" Mode="In" />
+    <Parameter Name="FireOtherRisk" Type="varchar(max)" Mode="In" />
+    <Parameter Name="FireGeneralComments" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Province" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Town" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Suburb" Type="varchar(max)" Mode="In" />
+    <Parameter Name="PostalCode" Type="varchar(max)" Mode="In" />
+    <Parameter Name="StreetNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="StreetName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BuildingName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updAssessmentFinalizeQA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updAssessmentGeneralInformation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="InsurerName" Type="varchar" Mode="In" />
+    <Parameter Name="InsurerContactPerson" Type="varchar" Mode="In" />
+    <Parameter Name="InsurerContactNumber" Type="varchar" Mode="In" />
+    <Parameter Name="InsurancePolicyNumber" Type="varchar" Mode="In" />
+    <Parameter Name="BrokerName" Type="varchar" Mode="In" />
+    <Parameter Name="BrokerContactNumber" Type="varchar" Mode="In" />
+    <Parameter Name="InsuredName" Type="varchar" Mode="In" />
+    <Parameter Name="InsuredContactNumber" Type="varchar" Mode="In" />
+    <Parameter Name="InsuredIndustrySector" Type="varchar" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="uDate" Type="datetime" Mode="In" />
+    <Parameter Name="InsuredEmailAddress" Type="varchar" Mode="In" />
+    <Parameter Name="InsurerEmailAddress" Type="varchar" Mode="In" />
+    <Parameter Name="BrokerEmailAddress" Type="varchar" Mode="In" />
+    <Parameter Name="IndustrySectorID" Type="int" Mode="In" />
+    <Parameter Name="IndustrySubSectorID" Type="int" Mode="In" />
+    <Parameter Name="IndustrySectorClassID" Type="int" Mode="In" />
+    <Parameter Name="isInternal" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updAssessmentImage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentImageID" Type="int" Mode="In" />
+    <Parameter Name="SurveyCategoryID" Type="int" Mode="In" />
+    <Parameter Name="Title" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="updAssessmentMovableAssetsValuation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="ClientName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="ClientContactNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="ClientEmailAddress" Type="varchar(max)" Mode="In" />
+    <Parameter Name="PolicyNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="ClaimNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="InsurerName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="InsurerContactPerson" Type="varchar(max)" Mode="In" />
+    <Parameter Name="InsurerConactNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="InsurerEmail" Type="varchar(max)" Mode="In" />
+    <Parameter Name="InsurerFunction" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BrokerName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BrokerContactPerson" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BrokerContactNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BrokerEmail" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BrokerFunction" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Province" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Town" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Suburb" Type="varchar(max)" Mode="In" />
+    <Parameter Name="PostalCode" Type="varchar(max)" Mode="In" />
+    <Parameter Name="StreetNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="StreetName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BuildingName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="TotalValuationAmmount" Type="decimal" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updAssessmentMovableAssetsValuationPropertyDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="TypeOfResidenceID" Type="int" Mode="In" />
+    <Parameter Name="RoofConstructionID" Type="int" Mode="In" />
+    <Parameter Name="VicinityID" Type="int" Mode="In" />
+    <Parameter Name="ExtentOfLandID" Type="int" Mode="In" />
+    <Parameter Name="BordersID" Type="int" Mode="In" />
+    <Parameter Name="AddressDetailsGeneralComments" Type="varchar(max)" Mode="In" />
+    <Parameter Name="AccessControl" Type="int" Mode="In" />
+    <Parameter Name="ArmedResponse" Type="int" Mode="In" />
+    <Parameter Name="CCTV" Type="int" Mode="In" />
+    <Parameter Name="PerimeterWall" Type="int" Mode="In" />
+    <Parameter Name="ElectricFence" Type="int" Mode="In" />
+    <Parameter Name="BarbedWire" Type="int" Mode="In" />
+    <Parameter Name="GuardsOnPatrol" Type="int" Mode="In" />
+    <Parameter Name="SecurityGates" Type="int" Mode="In" />
+    <Parameter Name="InternalSecurityBeams" Type="int" Mode="In" />
+    <Parameter Name="ExternalSecurityBeams" Type="int" Mode="In" />
+    <Parameter Name="AlarmSystem" Type="int" Mode="In" />
+    <Parameter Name="WindowSecurity" Type="int" Mode="In" />
+    <Parameter Name="SecurityGeneralComments" Type="varchar(max)" Mode="In" />
+    <Parameter Name="FireThatchStructure" Type="int" Mode="In" />
+    <Parameter Name="FireWoodenStructure" Type="int" Mode="In" />
+    <Parameter Name="FireFightingEquipment" Type="int" Mode="In" />
+    <Parameter Name="FireOtherRisk" Type="varchar(max)" Mode="In" />
+    <Parameter Name="FireGeneralComments" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Province" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Town" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Suburb" Type="varchar(max)" Mode="In" />
+    <Parameter Name="PostalCode" Type="varchar(max)" Mode="In" />
+    <Parameter Name="StreetNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="StreetName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BuildingName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updAssessmentMoveableAssetMediaItemsTagged" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MediaItemID" Type="int" Mode="In" />
+    <Parameter Name="AssetID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="Tagged" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updAssessmentQuoteStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="QuoteID" Type="int" Mode="In" />
+    <Parameter Name="QuoteStatusID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updAssessmentReference" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="References" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="updAssessmentRequirement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ASID" Type="int" Mode="In" />
+    <Parameter Name="AreaOfObservation" Type="varchar" Mode="In" />
+    <Parameter Name="DetailOfRequirement" Type="varchar" Mode="In" />
+    <Parameter Name="RiskRatingID" Type="int" Mode="In" />
+    <Parameter Name="Deadline" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="RiskTypeID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updAssessmentRequirementComment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentRequirementID" Type="int" Mode="In" />
+    <Parameter Name="Comment" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="updAssessmentRisk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="Comments" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="updAssessmentRiskComments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="MPLComments" Type="varchar(max)" Mode="In" />
+    <Parameter Name="EMLComments" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="updAssessmentRiskTargetDateStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RequirementID" Type="int" Mode="In" />
+    <Parameter Name="TargetDate" Type="datetime" Mode="In" />
+    <Parameter Name="StatusID" Type="int" Mode="In" />
+    <Parameter Name="DeadlineID" Type="int" Mode="In" />
+    <Parameter Name="Detail" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="updAssessmentRoom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RoomID" Type="int" Mode="In" />
+    <Parameter Name="Title" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Description" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BuildingID" Type="int" Mode="In" />
+    <Parameter Name="RoomTypeID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updAssessmentSpecialistReview" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="CompanyID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updAssessmentSpecialRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="Special" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="updAssessmentUserUnassign" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ActionUserID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updAssetMedia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssetMediaID" Type="int" Mode="In" />
+    <Parameter Name="Title" Type="varchar(max)" Mode="In" />
+    <Parameter Name="isCover" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updAssignUserAssessment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="ActionUserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updBlindSessionToken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Token" Type="varchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Password" Type="varchar" Mode="In" />
+    <Parameter Name="Pin" Type="varchar" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updCompanyBankAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyID" Type="int" Mode="In" />
+    <Parameter Name="BankName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BankAccountType" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BankAccountNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BankAccountNotes" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="updCompleteMoveableAssetsvaluation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssessmentID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updImageToTrash" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ImageID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updInvoice_AdminTool" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AccountNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="InvoiceID" Type="int" Mode="In" />
+    <Parameter Name="Amount" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="updInvoicePaid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="InvoiceID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updNotificationStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NotificationStatusID" Type="int" Mode="In" />
+    <Parameter Name="NotificationID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updUserFirebaseMessengerID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FirebaseMessengerID" Type="varchar(max)" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updUserProfileDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="Picture" Type="varchar(max)" Mode="In" />
+    <Parameter Name="FirstName" Type="varchar" Mode="In" />
+    <Parameter Name="LastName" Type="varchar" Mode="In" />
+    <Parameter Name="Cellphone" Type="varchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="updUserProfilePassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPassword" Type="varchar" Mode="In" />
+    <Parameter Name="NewPassword" Type="varchar" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updUserProfilePin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPin" Type="int" Mode="In" />
+    <Parameter Name="NewPin" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updWalletAccountTransfer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FromAccountID" Type="int" Mode="In" />
+    <Parameter Name="ToAccountID" Type="int" Mode="In" />
+    <Parameter Name="Amount" Type="decimal" Mode="In" />
+    <Parameter Name="Reference" Type="varchar(max)" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updWalletAccountTransfer_AdminTool" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FromAccountNumber" Type="varchar" Mode="In" />
+    <Parameter Name="ToAccountNumber" Type="varchar" Mode="In" />
+    <Parameter Name="Amount" Type="decimal" Mode="In" />
+    <Parameter Name="Reference" Type="varchar(max)" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updWalletPayMobile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FromAccountNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="ToAccountNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="FromReference" Type="varchar(max)" Mode="In" />
+    <Parameter Name="ToReference" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Amount" Type="decimal" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="DataModelEntitiesStoreContainer">
+    <EntitySet Name="Applications" EntityType="Self.Applications" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentAddress" EntityType="Self.AssessmentAddress" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentAsset" EntityType="Self.AssessmentAsset" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentAttachments" EntityType="Self.AssessmentAttachments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentBuilding" EntityType="Self.AssessmentBuilding" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentClientBookings" EntityType="Self.AssessmentClientBookings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentDocuments" EntityType="Self.AssessmentDocuments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentImages" EntityType="Self.AssessmentImages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentPolicyDetails" EntityType="Self.AssessmentPolicyDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentPolicyElements" EntityType="Self.AssessmentPolicyElements" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentPropertyDetails" EntityType="Self.AssessmentPropertyDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentQuoteStatus" EntityType="Self.AssessmentQuoteStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentRateCard" EntityType="Self.AssessmentRateCard" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentReference" EntityType="Self.AssessmentReference" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentRequirement" EntityType="Self.AssessmentRequirement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentRequirementDocuments" EntityType="Self.AssessmentRequirementDocuments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentReview" EntityType="Self.AssessmentReview" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentRiskClassificationFactor" EntityType="Self.AssessmentRiskClassificationFactor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentRiskClassificationSummary" EntityType="Self.AssessmentRiskClassificationSummary" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentRiskFactor" EntityType="Self.AssessmentRiskFactor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentRoom" EntityType="Self.AssessmentRoom" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentStatus" EntityType="Self.AssessmentStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentSurveyJournal" EntityType="Self.AssessmentSurveyJournal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentSurveyStatus" EntityType="Self.AssessmentSurveyStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentTrackType" EntityType="Self.AssessmentTrackType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Companies" EntityType="Self.Companies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CompanyType" EntityType="Self.CompanyType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CPS_Statement" EntityType="Self.CPS_Statement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustodiansPerOrganization" EntityType="Self.CustodiansPerOrganization" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Devices" EntityType="Self.Devices" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GeoStamp" EntityType="Self.GeoStamp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IdentityType" EntityType="Self.IdentityType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IndustrySector" EntityType="Self.IndustrySector" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IndustrySectorClass" EntityType="Self.IndustrySectorClass" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IndustrySubSector" EntityType="Self.IndustrySubSector" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NotificationType" EntityType="Self.NotificationType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RiskType" EntityType="Self.RiskType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sessions" EntityType="Self.Sessions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SurveyCategories" EntityType="Self.SurveyCategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transactions" EntityType="Self.Transactions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransactionStatus" EntityType="Self.TransactionStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransactionType" EntityType="Self.TransactionType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Wallet" EntityType="Self.Wallet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WalletAccounts" EntityType="Self.WalletAccounts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WalletAccountType" EntityType="Self.WalletAccountType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Assessment" EntityType="Self.Assessment" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Assessment].[ID] AS [ID], 
+    [Assessment].[AssessmentTypeID] AS [AssessmentTypeID], 
+    [Assessment].[AssessmentStatusID] AS [AssessmentStatusID], 
+    [Assessment].[UserID] AS [UserID], 
+    [Assessment].[cDate] AS [cDate], 
+    [Assessment].[Reference] AS [Reference], 
+    [Assessment].[OtherReference] AS [OtherReference], 
+    [Assessment].[CustomerReference] AS [CustomerReference], 
+    [Assessment].[PolicyReference] AS [PolicyReference], 
+    [Assessment].[SurveyJSON] AS [SurveyJSON], 
+    [Assessment].[SurveyJSONResult] AS [SurveyJSONResult], 
+    [Assessment].[Quote] AS [Quote], 
+    [Assessment].[DistrictID] AS [DistrictID], 
+    [Assessment].[Address1] AS [Address1], 
+    [Assessment].[Address2] AS [Address2], 
+    [Assessment].[AddressInstructions] AS [AddressInstructions], 
+    [Assessment].[ContactPerson] AS [ContactPerson], 
+    [Assessment].[ContactCellphone] AS [ContactCellphone], 
+    [Assessment].[ContactEmail] AS [ContactEmail], 
+    [Assessment].[ReceipientName] AS [ReceipientName], 
+    [Assessment].[ReceipientSignature] AS [ReceipientSignature], 
+    [Assessment].[ReceipientOTP] AS [ReceipientOTP], 
+    [Assessment].[ReceipientFeedback] AS [ReceipientFeedback], 
+    [Assessment].[ReceipientRating] AS [ReceipientRating], 
+    [Assessment].[uDate] AS [uDate], 
+    [Assessment].[InsurerName] AS [InsurerName], 
+    [Assessment].[InsurerContactPerson] AS [InsurerContactPerson], 
+    [Assessment].[InsurerContactNumber] AS [InsurerContactNumber], 
+    [Assessment].[InsurerPolicyNumber] AS [InsurerPolicyNumber], 
+    [Assessment].[BrokerName] AS [BrokerName], 
+    [Assessment].[BrokerContactNumber] AS [BrokerContactNumber], 
+    [Assessment].[InsuredName] AS [InsuredName], 
+    [Assessment].[InsuredContactNumber] AS [InsuredContactNumber], 
+    [Assessment].[InsuredIndustrySector] AS [InsuredIndustrySector], 
+    [Assessment].[InsurancePolicyNumber] AS [InsurancePolicyNumber], 
+    [Assessment].[InsurerEmailAddress] AS [InsurerEmailAddress], 
+    [Assessment].[InsuredEmailAddress] AS [InsuredEmailAddress], 
+    [Assessment].[BrokerEmailAddress] AS [BrokerEmailAddress], 
+    [Assessment].[NewPolicy] AS [NewPolicy], 
+    [Assessment].[FileUploadCapture] AS [FileUploadCapture], 
+    [Assessment].[IndustrySectorID] AS [IndustrySectorID], 
+    [Assessment].[IndustrySubSectorID] AS [IndustrySubSectorID], 
+    [Assessment].[IndustrySectorClassID] AS [IndustrySectorClassID], 
+    [Assessment].[EML] AS [EML], 
+    [Assessment].[MPL] AS [MPL], 
+    [Assessment].[RiskComments] AS [RiskComments], 
+    [Assessment].[MPLComments] AS [MPLComments], 
+    [Assessment].[EMLComments] AS [EMLComments], 
+    [Assessment].[BookingDate] AS [BookingDate], 
+    [Assessment].[BookingConfirmedBy] AS [BookingConfirmedBy], 
+    [Assessment].[BookingConfirmedByContact] AS [BookingConfirmedByContact], 
+    [Assessment].[BookingNote] AS [BookingNote], 
+    [Assessment].[Special] AS [Special], 
+    [Assessment].[isInternal] AS [isInternal], 
+    [Assessment].[ClaimNumber] AS [ClaimNumber], 
+    [Assessment].[InsurerFunction] AS [InsurerFunction], 
+    [Assessment].[BrokerFunction] AS [BrokerFunction], 
+    [Assessment].[StreetNumber] AS [StreetNumber], 
+    [Assessment].[StreetName] AS [StreetName], 
+    [Assessment].[BuildingName] AS [BuildingName], 
+    [Assessment].[Province] AS [Province], 
+    [Assessment].[Town] AS [Town], 
+    [Assessment].[Suburb] AS [Suburb], 
+    [Assessment].[PostalCode] AS [PostalCode], 
+    [Assessment].[TotalValuationAmmount] AS [TotalValuationAmmount], 
+    [Assessment].[BrokerContactPerson] AS [BrokerContactPerson], 
+    [Assessment].[DateCompleted] AS [DateCompleted]
+    FROM [dbo].[Assessment] AS [Assessment]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="AssessmentCategory" EntityType="Self.AssessmentCategory" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AssessmentCategory].[ID] AS [ID], 
+    [AssessmentCategory].[Description] AS [Description], 
+    [AssessmentCategory].[UserID] AS [UserID], 
+    [AssessmentCategory].[cDate] AS [cDate]
+    FROM [dbo].[AssessmentCategory] AS [AssessmentCategory]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="AssessmentExpense" EntityType="Self.AssessmentExpense" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AssessmentExpense].[ID] AS [ID], 
+    [AssessmentExpense].[AssessmentID] AS [AssessmentID], 
+    [AssessmentExpense].[DocumentURL] AS [DocumentURL], 
+    [AssessmentExpense].[UserID] AS [UserID], 
+    [AssessmentExpense].[Type] AS [Type], 
+    [AssessmentExpense].[Reason] AS [Reason], 
+    [AssessmentExpense].[Total] AS [Total], 
+    [AssessmentExpense].[uDate] AS [uDate], 
+    [AssessmentExpense].[AssessmentExpenseTypeID] AS [AssessmentExpenseTypeID]
+    FROM [dbo].[AssessmentExpense] AS [AssessmentExpense]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="AssessmentExpenseType" EntityType="Self.AssessmentExpenseType" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AssessmentExpenseType].[ID] AS [ID], 
+    [AssessmentExpenseType].[Description] AS [Description]
+    FROM [dbo].[AssessmentExpenseType] AS [AssessmentExpenseType]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="AssessmentQuote" EntityType="Self.AssessmentQuote" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AssessmentQuote].[ID] AS [ID], 
+    [AssessmentQuote].[AssessmentID] AS [AssessmentID], 
+    [AssessmentQuote].[UserID] AS [UserID], 
+    [AssessmentQuote].[Quote] AS [Quote], 
+    [AssessmentQuote].[QuoteDate] AS [QuoteDate], 
+    [AssessmentQuote].[ValidUntillDate] AS [ValidUntillDate], 
+    [AssessmentQuote].[QuoteStatusID] AS [QuoteStatusID], 
+    [AssessmentQuote].[QuoteUserID] AS [QuoteUserID], 
+    [AssessmentQuote].[QuoteStatusDate] AS [QuoteStatusDate], 
+    [AssessmentQuote].[QuoteCardID] AS [QuoteCardID], 
+    [AssessmentQuote].[ServiceDate] AS [ServiceDate], 
+    [AssessmentQuote].[Note] AS [Note], 
+    [AssessmentQuote].[CompanyID] AS [CompanyID], 
+    [AssessmentQuote].[SurchargeFee] AS [SurchargeFee], 
+    [AssessmentQuote].[AssessorTotal] AS [AssessorTotal], 
+    [AssessmentQuote].[SpecialistTotal] AS [SpecialistTotal], 
+    [AssessmentQuote].[ProfitTotal] AS [ProfitTotal], 
+    [AssessmentQuote].[InitialQuoted] AS [InitialQuoted], 
+    [AssessmentQuote].[AssessmentRateCardID] AS [AssessmentRateCardID], 
+    [AssessmentQuote].[VAT_Code] AS [VAT_Code], 
+    [AssessmentQuote].[VAT_AMOUNT] AS [VAT_AMOUNT], 
+    [AssessmentQuote].[CALC] AS [CALC]
+    FROM [dbo].[AssessmentQuote] AS [AssessmentQuote]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="AssessmentQuoteDecon" EntityType="Self.AssessmentQuoteDecon" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AssessmentQuoteDecon].[ID] AS [ID], 
+    [AssessmentQuoteDecon].[QuoteID] AS [QuoteID], 
+    [AssessmentQuoteDecon].[UserTypeID] AS [UserTypeID], 
+    [AssessmentQuoteDecon].[Due] AS [Due], 
+    [AssessmentQuoteDecon].[cDate] AS [cDate], 
+    [AssessmentQuoteDecon].[Override] AS [Override], 
+    [AssessmentQuoteDecon].[UserID] AS [UserID]
+    FROM [dbo].[AssessmentQuoteDecon] AS [AssessmentQuoteDecon]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="AssessmentRoomType" EntityType="Self.AssessmentRoomType" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AssessmentRoomType].[ID] AS [ID], 
+    [AssessmentRoomType].[Description] AS [Description], 
+    [AssessmentRoomType].[cDate] AS [cDate]
+    FROM [dbo].[AssessmentRoomType] AS [AssessmentRoomType]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="AssessmentSubCategory" EntityType="Self.AssessmentSubCategory" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AssessmentSubCategory].[ID] AS [ID], 
+    [AssessmentSubCategory].[Description] AS [Description], 
+    [AssessmentSubCategory].[AssessmentCategoryID] AS [AssessmentCategoryID], 
+    [AssessmentSubCategory].[UserID] AS [UserID], 
+    [AssessmentSubCategory].[cDate] AS [cDate]
+    FROM [dbo].[AssessmentSubCategory] AS [AssessmentSubCategory]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="AssessmentSurveyAssociations" EntityType="Self.AssessmentSurveyAssociations" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AssessmentSurveyAssociations].[ID] AS [ID], 
+    [AssessmentSurveyAssociations].[AssessmentTypeID] AS [AssessmentTypeID], 
+    [AssessmentSurveyAssociations].[SurveyID] AS [SurveyID], 
+    [AssessmentSurveyAssociations].[aDate] AS [aDate], 
+    [AssessmentSurveyAssociations].[UserID] AS [UserID], 
+    [AssessmentSurveyAssociations].[Active] AS [Active]
+    FROM [dbo].[AssessmentSurveyAssociations] AS [AssessmentSurveyAssociations]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="AssessmentSurveys" EntityType="Self.AssessmentSurveys" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AssessmentSurveys].[ID] AS [ID], 
+    [AssessmentSurveys].[AssessmentID] AS [AssessmentID], 
+    [AssessmentSurveys].[SurveyID] AS [SurveyID], 
+    [AssessmentSurveys].[cDate] AS [cDate], 
+    [AssessmentSurveys].[uDate] AS [uDate], 
+    [AssessmentSurveys].[AssessorUserID] AS [AssessorUserID], 
+    [AssessmentSurveys].[AssessmentSurveyStatusIS] AS [AssessmentSurveyStatusIS], 
+    [AssessmentSurveys].[SurveyQuestionsJSON] AS [SurveyQuestionsJSON], 
+    [AssessmentSurveys].[SurveyAnswersJSON] AS [SurveyAnswersJSON]
+    FROM [dbo].[AssessmentSurveys] AS [AssessmentSurveys]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="AssessmentTrack" EntityType="Self.AssessmentTrack" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AssessmentTrack].[ID] AS [ID], 
+    [AssessmentTrack].[AssessmentStatusID] AS [AssessmentStatusID], 
+    [AssessmentTrack].[AssessmentTrackTypeID] AS [AssessmentTrackTypeID], 
+    [AssessmentTrack].[AssessmentID] AS [AssessmentID], 
+    [AssessmentTrack].[UserID] AS [UserID], 
+    [AssessmentTrack].[cDate] AS [cDate], 
+    [AssessmentTrack].[Longitude] AS [Longitude], 
+    [AssessmentTrack].[Latitude] AS [Latitude], 
+    [AssessmentTrack].[Note] AS [Note], 
+    [AssessmentTrack].[Picture] AS [Picture], 
+    [AssessmentTrack].[Signature] AS [Signature], 
+    [AssessmentTrack].[PictureDescription] AS [PictureDescription], 
+    [AssessmentTrack].[SigneeName] AS [SigneeName]
+    FROM [dbo].[AssessmentTrack] AS [AssessmentTrack]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="AssessmentType" EntityType="Self.AssessmentType" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AssessmentType].[ID] AS [ID], 
+    [AssessmentType].[Description] AS [Description], 
+    [AssessmentType].[AssessmentSubCategoryID] AS [AssessmentSubCategoryID], 
+    [AssessmentType].[SurveyJSON] AS [SurveyJSON], 
+    [AssessmentType].[UserID] AS [UserID], 
+    [AssessmentType].[cDate] AS [cDate]
+    FROM [dbo].[AssessmentType] AS [AssessmentType]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="AssessmentUserAllocation" EntityType="Self.AssessmentUserAllocation" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AssessmentUserAllocation].[ID] AS [ID], 
+    [AssessmentUserAllocation].[AssessmentID] AS [AssessmentID], 
+    [AssessmentUserAllocation].[UserID] AS [UserID], 
+    [AssessmentUserAllocation].[AssessmentUserRoleID] AS [AssessmentUserRoleID], 
+    [AssessmentUserAllocation].[AssessmentUserAllocationStatusID] AS [AssessmentUserAllocationStatusID], 
+    [AssessmentUserAllocation].[Note] AS [Note], 
+    [AssessmentUserAllocation].[ConfimedUserID] AS [ConfimedUserID], 
+    [AssessmentUserAllocation].[ConfimedDate] AS [ConfimedDate], 
+    [AssessmentUserAllocation].[cDate] AS [cDate]
+    FROM [dbo].[AssessmentUserAllocation] AS [AssessmentUserAllocation]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="AssetCategory" EntityType="Self.AssetCategory" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AssetCategory].[ID] AS [ID], 
+    [AssetCategory].[Description] AS [Description], 
+    [AssetCategory].[RoomTypeID] AS [RoomTypeID], 
+    [AssetCategory].[Valid] AS [Valid]
+    FROM [dbo].[AssetCategory] AS [AssetCategory]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="AssetMedia" EntityType="Self.AssetMedia" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AssetMedia].[ID] AS [ID], 
+    [AssetMedia].[MediaTypeID] AS [MediaTypeID], 
+    [AssetMedia].[Title] AS [Title], 
+    [AssetMedia].[Description] AS [Description], 
+    [AssetMedia].[MediaURL] AS [MediaURL], 
+    [AssetMedia].[RoomID] AS [RoomID], 
+    [AssetMedia].[Type] AS [Type], 
+    [AssetMedia].[uDate] AS [uDate], 
+    [AssetMedia].[DocumentName] AS [DocumentName], 
+    [AssetMedia].[isCover] AS [isCover], 
+    [AssetMedia].[UserID] AS [UserID], 
+    [AssetMedia].[LevelID] AS [LevelID]
+    FROM [dbo].[AssetMedia] AS [AssetMedia]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="AssetMediaItems" EntityType="Self.AssetMediaItems" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AssetMediaItems].[ID] AS [ID], 
+    [AssetMediaItems].[AssetMedia] AS [AssetMedia], 
+    [AssetMediaItems].[AssetID] AS [AssetID], 
+    [AssetMediaItems].[DurationAt] AS [DurationAt], 
+    [AssetMediaItems].[uDate] AS [uDate], 
+    [AssetMediaItems].[DocumentName] AS [DocumentName], 
+    [AssetMediaItems].[UserID] AS [UserID]
+    FROM [dbo].[AssetMediaItems] AS [AssetMediaItems]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="AssetSubCategory" EntityType="Self.AssetSubCategory" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AssetSubCategory].[ID] AS [ID], 
+    [AssetSubCategory].[AssetCategoryID] AS [AssetCategoryID], 
+    [AssetSubCategory].[Description] AS [Description], 
+    [AssetSubCategory].[Valid] AS [Valid]
+    FROM [dbo].[AssetSubCategory] AS [AssetSubCategory]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Borders" EntityType="Self.Borders" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Borders].[ID] AS [ID], 
+    [Borders].[Description] AS [Description]
+    FROM [dbo].[Borders] AS [Borders]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ExtendOfLand" EntityType="Self.ExtendOfLand" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ExtendOfLand].[ID] AS [ID], 
+    [ExtendOfLand].[Description] AS [Description]
+    FROM [dbo].[ExtendOfLand] AS [ExtendOfLand]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="lh_OccupationPermission" EntityType="Self.lh_OccupationPermission" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [lh_OccupationPermission].[ID] AS [ID], 
+    [lh_OccupationPermission].[OccupationID] AS [OccupationID], 
+    [lh_OccupationPermission].[ModuleID] AS [ModuleID], 
+    [lh_OccupationPermission].[FeatureID] AS [FeatureID], 
+    [lh_OccupationPermission].[StateID] AS [StateID], 
+    [lh_OccupationPermission].[cDate] AS [cDate]
+    FROM [dbo].[lh_OccupationPermission] AS [lh_OccupationPermission]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="NotificationStatus" EntityType="Self.NotificationStatus" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [NotificationStatus].[ID] AS [ID], 
+    [NotificationStatus].[Description] AS [Description], 
+    [NotificationStatus].[cDate] AS [cDate]
+    FROM [dbo].[NotificationStatus] AS [NotificationStatus]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Organization" EntityType="Self.Organization" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Organization].[ID] AS [ID], 
+    [Organization].[Name] AS [Name], 
+    [Organization].[DistrictID] AS [DistrictID], 
+    [Organization].[Address1] AS [Address1], 
+    [Organization].[Address2] AS [Address2], 
+    [Organization].[Tell] AS [Tell], 
+    [Organization].[Cell] AS [Cell], 
+    [Organization].[Email] AS [Email], 
+    [Organization].[RegNo] AS [RegNo], 
+    [Organization].[VatNo] AS [VatNo], 
+    [Organization].[CompanyID] AS [CompanyID], 
+    [Organization].[cDate] AS [cDate]
+    FROM [dbo].[Organization] AS [Organization]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="QuoteCard" EntityType="Self.QuoteCard" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [QuoteCard].[ID] AS [ID], 
+    [QuoteCard].[Title] AS [Title], 
+    [QuoteCard].[cDate] AS [cDate], 
+    [QuoteCard].[UserID] AS [UserID], 
+    [QuoteCard].[Active] AS [Active], 
+    [QuoteCard].[uDate] AS [uDate]
+    FROM [dbo].[QuoteCard] AS [QuoteCard]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="QuoteCardSplit" EntityType="Self.QuoteCardSplit" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [QuoteCardSplit].[ID] AS [ID], 
+    [QuoteCardSplit].[QuoteCardID] AS [QuoteCardID], 
+    [QuoteCardSplit].[UserTypeID] AS [UserTypeID], 
+    [QuoteCardSplit].[SharePercent] AS [SharePercent], 
+    [QuoteCardSplit].[Active] AS [Active], 
+    [QuoteCardSplit].[UserID] AS [UserID], 
+    [QuoteCardSplit].[cDate] AS [cDate]
+    FROM [dbo].[QuoteCardSplit] AS [QuoteCardSplit]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="RoofConstruction" EntityType="Self.RoofConstruction" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [RoofConstruction].[ID] AS [ID], 
+    [RoofConstruction].[Description] AS [Description]
+    FROM [dbo].[RoofConstruction] AS [RoofConstruction]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Survey" EntityType="Self.Survey" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Survey].[ID] AS [ID], 
+    [Survey].[Title] AS [Title], 
+    [Survey].[Description] AS [Description], 
+    [Survey].[cDate] AS [cDate], 
+    [Survey].[Active] AS [Active], 
+    [Survey].[UserID] AS [UserID], 
+    [Survey].[JSON] AS [JSON]
+    FROM [dbo].[Survey] AS [Survey]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TypeOfResidence" EntityType="Self.TypeOfResidence" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TypeOfResidence].[ID] AS [ID], 
+    [TypeOfResidence].[Description] AS [Description]
+    FROM [dbo].[TypeOfResidence] AS [TypeOfResidence]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="UOM" EntityType="Self.UOM" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [UOM].[ID] AS [ID], 
+    [UOM].[Description] AS [Description]
+    FROM [dbo].[UOM] AS [UOM]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Vicinity" EntityType="Self.Vicinity" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Vicinity].[ID] AS [ID], 
+    [Vicinity].[Description] AS [Description]
+    FROM [dbo].[Vicinity] AS [Vicinity]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
