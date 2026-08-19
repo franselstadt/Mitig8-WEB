@@ -1,131 +1,61 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
+using Mitig8.Architecture;
 
 namespace Mitig8
 {
     public partial class dashboard : System.Web.UI.Page
     {
-        Cloud Cloud = new Cloud();
-        DataModal DataModal = new DataModal();
+        private Cloud Cloud = new Cloud();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Cloud.Page(this);
-            if (!IsPostBack)
+            this.Cloud.Page(this);
+            if (!this.IsPostBack)
             {
-                Initialize();
+                this.Initialize();
             }
-            Declare();
+
+            this.Declare();
         }
 
         public void Initialize()
         {
             try
             {
-                Cloud.GetCookie("UserID").ToString();
-
-                Assessment.Visible = false;
-                Assessment_Building_Valuation.Visible = false;
-                Assessment_Assets_Valuation.Visible = false;
-
-                try
+                SessionContext session = SessionContext.FromCookies(this.Request);
+                if (!session.IsAuthenticated)
                 {
-                    if (Request.QueryString["Module"] == "ASSESSMENT_BUILDING_VALUATION")
-                    {
-
-                        Assessment.Visible = false;
-                        Assessment_Building_Valuation.Visible = true;
-                        Assessment_Assets_Valuation.Visible = false;
-
-
-                    }
-                    else if (Request.QueryString["Module"] == "ASSESSMENT_ASSETS_VALUATION")
-                    {
-
-                        Assessment.Visible = false;
-                        Assessment_Building_Valuation.Visible = false;
-                        Assessment_Assets_Valuation.Visible = true;
-
-                    }
-                    else if (Request.QueryString["Module"] == "ASSESSMENT")
-                    {
-
-                        Assessment.Visible = true;
-                        Assessment_Building_Valuation.Visible = false;
-                        Assessment_Assets_Valuation.Visible = false;
-
-                    }
-                    else
-                    {
-                        Assessment.Visible = false;
-                        Assessment_Building_Valuation.Visible = false;
-                        Assessment_Assets_Valuation.Visible = false;
-
-                    }
-
+                    this.Cloud.GetCookie("UserID");
+                    return;
                 }
-                catch { }
-            }
-            catch { }
 
-            try
-            {
+                this.Assessment.Visible = false;
+                this.Assessment_Building_Valuation.Visible = false;
+                this.Assessment_Assets_Valuation.Visible = false;
 
+                string module = this.Request.QueryString["Module"];
+                if (module == ModuleCatalog.BuildingValuation)
+                {
+                    this.Assessment_Building_Valuation.Visible = true;
+                }
+                else if (module == ModuleCatalog.AssetsValuation)
+                {
+                    this.Assessment_Assets_Valuation.Visible = true;
+                }
+                else if (module == ModuleCatalog.Assessment)
+                {
+                    this.Assessment.Visible = true;
+                }
             }
             catch (Exception ex)
             {
-                Cloud.Exception(ex);
+                this.Cloud.Exception(ex);
             }
-
         }
 
         public void Declare()
         {
-            try
-            {
-                //if (Request.QueryString["Module"] == "ASSESSMENT_BUILDING_VALUATION")
-                //{
-
-                //    Assessment.Visible = false;
-                //    Assessment_Building_Valuation.Visible = true;
-                //    Assessment_Assets_Valuation.Visible = false;
-
-
-                //}
-                //else if (Request.QueryString["Module"] == "ASSESSMENT_ASSETS_VALUATION")
-                //{
-
-                //    Assessment.Visible = false;
-                //    Assessment_Building_Valuation.Visible = false;
-                //    Assessment_Assets_Valuation.Visible = true;
-
-                //}
-                //else if (Request.QueryString["Module"] == "ASSESSMENT")
-                //{
-
-                //    Assessment.Visible = true;
-                //    Assessment_Building_Valuation.Visible = false;
-                //    Assessment_Assets_Valuation.Visible = false;
-
-                //}
-                //else
-                //{
-                //    Assessment.Visible = false;
-                //    Assessment_Building_Valuation.Visible = false;
-                //    Assessment_Assets_Valuation.Visible = false;
-
-                //}
-            }
-            catch (Exception ex)
-            {
-                Cloud.Exception(ex);
-            }
         }
-
-
     }
 }

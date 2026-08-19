@@ -8,6 +8,73 @@ Copyright in the assembly is 2019. The authenticate screen still identifies itse
 
 This README is a record of what I actually built, and a schema map of the database the EDMX was generated from.
 
+The Web Forms UI is still the original shell. Data and workflow now go through a **layered DDD structure** (Domain / Application / Architecture / Infrastructure) so new work does not keep piling onto `DataModal` from `.ascx` code-behind.
+
+---
+
+## Layered architecture
+
+```
+Modules / pages / Web API          Presentation (Web Forms)
+        │
+Application/*                      Use cases (AssessmentApplication, AuthenticationApplication, …)
+        │
+Domain/Items + Domain/Collections  Persistable Items (BaseItem CRUD) and ViewItems (read models)
+        │
+Architecture                       CompositionRoot, SessionContext, ModuleCatalog, AppSettings
+        │
+Infrastructure/Persistence         DataModal + stored procedures mapped onto Items/Collections
+Workers                            Report stored-proc runners (Excel/risk reports)
+Extensions                         Shared helpers (null-safe text)
+```
+
+### Domain (`Domain/`)
+
+Persistable types inherit `BaseItem` and expose **Create / Read / Update / Delete** (sync and async). Collections inherit `BaseCollection<T>` and expose **CreateItems / ReadItems / UpdateItems / DeleteItems** (sync and async). Non-database shapes are `ViewItem` / `ViewCollection<T>`.
+
+| Folder | Role |
+| --- | --- |
+| `Domain/Items/Base` | `BaseItem` |
+| `Domain/Items/Interfaces` | `IItem`, `IViewItem`, `IItemPersistence` |
+| `Domain/Items/View` | Read models (`AssessmentWorklistViewItem`, `SessionPrincipalViewItem`, …) |
+| `Domain/Items` | `AssessmentItem`, `UserItem`, `CompanyItem`, `SessionItem`, `WalletItem`, … |
+| `Domain/Collections/Base` | `BaseCollection<T>`, `CollectionPersistenceHost` |
+| `Domain/Collections/Interfaces` | `IItemCollection<T>`, `ICollectionPersistence` |
+| `Domain/Collections/View` | Worklists and stats read models |
+| `Domain/Collections` | Persistable collections (`AssessmentCollection`, `UserCollection`, …) |
+
+`BaseItem.Persistence` is composed at startup. Domain has no UI and no SQL strings.
+
+### Application (`Application/`)
+
+Use-case facades the screens should call instead of `new DataModal()`:
+
+- `AuthenticationApplication` — issue token, resolve principal
+- `AssessmentApplication` — active/archive worklists, stats, read/create/update/cancel
+- `HomeApplication` — home counters
+- `UserApplication` — profile + company users
+- `CompanyApplication` — company list
+- `BillingApplication` — billing stats
+
+### Architecture (`Architecture/`)
+
+- `CompositionRoot.Compose()` — wires item/collection persistence (`Global.asax` `Application_Start`)
+- `SessionContext` — current user from cookies / principal
+- `ModuleCatalog` — dashboard `?Module=` values
+- `AppSettings` — portal URLs
+
+### Infrastructure (`Infrastructure/Persistence/`)
+
+`ItemPersistence` / `CollectionPersistence` call the existing `DataModal` stored procedures (`addAssessment`, `getAssessmentsAllActive`, `getSessionToken`, …). The EDMX stays generated; it is no longer the application API.
+
+`Workers/ReportWorker` runs `repAssessmentRisk` / `repValuationSummary` using the EF provider connection string from `Web.config` (no hardcoded SQL password). `Data.cs` is a thin facade over that worker.
+
+### What is already on the new path
+
+Auth (`authenticate.aspx`, `AuthenticateController`), dashboard module routing, Home, Assessments worklist, Companies list, Billing stats, and reports.
+
+Remaining `.ascx` modules still talk to `DataModal` directly. Move those the same way: ViewItem/collection → persistence map → Application method → UI.
+
 ---
 
 ## What I built
@@ -88,8 +155,14 @@ I did **not** write AdminLTE itself. The leftover AdminLTE README, `dist/`, `plu
 ## How the app is structured
 
 ```
-authenticate.aspx          token → cookies → dashboard
-dashboard.aspx             host page; ?Module=ASSESSMENT | ASSESSMENT_BUILDING_VALUATION | ASSESSMENT_ASSETS_VALUATION
+Domain/                    persistable Items + ViewItems + Collections
+Application/               use cases
+Architecture/              composition, session, module catalog
+Infrastructure/Persistence DataModal adapters
+Workers/                   report procedures
+Extensions/                helpers
+authenticate.aspx          token → Application → cookies → dashboard
+dashboard.aspx             host page; ?Module= from ModuleCatalog
   Controls/Layout          sidebar menu, navbar
   Controls/Dependencies    AdminLTE header/footer includes
   Controls/Global          notifications, notify modal, wallet
@@ -109,10 +182,10 @@ dashboard.aspx             host page; ?Module=ASSESSMENT | ASSESSMENT_BUILDING_V
 documents/                 printable PDF pages
 RunSurvey/                 survey runner + download
 App_Start/                 Web API + routes + bundles
-DataModal.edmx             EF model of dbo
+DataModal.edmx             EF model of dbo (infrastructure, not the app API)
 ```
 
-`Cloud.Page(this)` is called at the top of every page. It disables cache and, if the `UserID` cookie is missing, runs the unauthorized redirect.
+`Cloud.Page(this)` is called at the top of every page. It disables cache and, if the `UserID` cookie is missing, runs the unauthorized redirect. New screens should read `SessionContext.FromCookies(Request)` instead of scattering `Cloud.GetCookie`.
 
 ---
 
@@ -122,14 +195,14 @@ DataModal.edmx             EF model of dbo
 secure.mitig8.co.za / mobile
         │  GET api/Authenticate?Email&Password&Pin&ApplicationID&IPAddress
         ▼
-AuthenticateController.getSessionToken
-        │  DataModal.getSessionToken(...)
+AuthenticateController → AuthenticationApplication.IssueToken
+        │  SessionItem.Create() → dbo.getSessionToken
         ▼
 dbo.Sessions  (Token, UserID, Email, Pin, ApplicationID, IPAddress, Active)
         │  browser opens authenticate.aspx?Token=...
         ▼
-getSessionDetailsToken + getUserDetailsByID
-        │  cookies: UserID, Pin, FirstName, LastName, Email, UserTypeID, CompanyID, Picture, ...
+AuthenticationApplication.ReadPrincipal → SessionItem.Read + UserItem.Read
+        │  SessionContext.WriteCookies (UserID, Pin, name, company, user type, picture, ...)
         ▼
 dashboard.aspx
 ```

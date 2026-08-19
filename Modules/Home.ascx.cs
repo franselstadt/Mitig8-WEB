@@ -1,64 +1,55 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
+using Mitig8.Application.Home;
+using Mitig8.Architecture;
+using Mitig8.Domain.Items.View;
 
 namespace Mitig8.Modules
 {
     public partial class Home : System.Web.UI.UserControl
     {
+        public Cloud Cloud = new Cloud();
+        private HomeApplication homeApplication = new HomeApplication();
 
-            public Cloud Cloud = new Cloud();
-            DataModal DataModal = new DataModal();
-
-            protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            this.Cloud.Page(this.Page);
+            if (!this.IsPostBack)
             {
-                Cloud.Page(this.Page);
-                if (!IsPostBack)
-                {
-                    Initialize();
-                }
-                Declare();
+                this.Initialize();
             }
 
-            public void Initialize()
+            this.Declare();
+        }
+
+        public void Initialize()
+        {
+            try
             {
-                try
-                {
-                    int UserID = int.Parse(Cloud.GetCookie("UserID").ToString());
-                    int CompanyID = int.Parse(Cloud.GetCookie("CompanyID").ToString());
-                    var Response = DataModal.getUserDetailsHome(UserID, CompanyID).ToList()[0];
-                    lblInvoices.Text = Response.Invoices.ToString();
-                    lblAssessments.Text = Response.Assessments.ToString();
-                    lblNotifications.Text = Response.Notifications.ToString();
-                    lblUsers.Text = Response.Users.ToString();
-
-                   var GlobalResponse = DataModal.getDetailsHomeGlobal().ToList()[0];
-                   lblTotaAssessments.Text = GlobalResponse.Assessments.ToString();
-                   lblInsurers.Text = GlobalResponse.Insurers.ToString();
-                   lblAssessors.Text = GlobalResponse.Assessors.ToString();
-                   lblSpecialists.Text = GlobalResponse.Specialist.ToString();
-
+                this.Cloud.GetCookie("UserID");
+                SessionContext session = SessionContext.FromCookies(this.Request);
+                HomeSummaryViewItem summary = this.homeApplication.ReadSummary(session.UserID, session.CompanyID);
+                this.lblInvoices.Text = summary.Invoices.ToString();
+                this.lblAssessments.Text = summary.Assessments.ToString();
+                this.lblNotifications.Text = summary.Notifications.ToString();
+                this.lblUsers.Text = summary.Users.ToString();
+                this.lblTotaAssessments.Text = summary.TotalAssessments.ToString();
+                this.lblInsurers.Text = summary.Insurers.ToString();
+                this.lblAssessors.Text = summary.Assessors.ToString();
+                this.lblSpecialists.Text = summary.Specialists.ToString();
             }
             catch (Exception ex)
-                {
-                    Cloud.Exception(ex);
-                }
-            }
-
-            public void Declare()
             {
-
+                this.Cloud.Exception(ex);
             }
+        }
 
-            public void btnShowMessage_Click(object sender, EventArgs e)
-            {
-                //  Cloud.MessageBox.Show("Test", "text", MessageBoxType.info);
+        public void Declare()
+        {
+        }
 
-            }
-        
+        public void btnShowMessage_Click(object sender, EventArgs e)
+        {
+        }
     }
 }
-    

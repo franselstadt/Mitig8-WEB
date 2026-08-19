@@ -71,11 +71,10 @@ namespace Mitig8.Modules.Billing
 
         public void setBillingStats(int UserID)
         {
-            var Stats = DataModal.getBillingStats(UserID).ToList()[0];
-            lblAvailableBalance.Text = "R" + Stats.Available_Balance.ToString();
-            lblRenewalFee.Text = "R" + Stats.Renewal_Fee.ToString();
-            lblUnpaidBalance.Text = "R" + Stats.Unpaid_Invoices.ToString();
-            
+            Mitig8.Domain.Items.View.BillingStatsViewItem stats = new Mitig8.Application.Billing.BillingApplication().ReadStats(UserID);
+            lblAvailableBalance.Text = "R" + stats.AvailableBalance.ToString();
+            lblRenewalFee.Text = "R" + stats.RenewalFee.ToString();
+            lblUnpaidBalance.Text = "R" + stats.UnpaidInvoices.ToString();
         }
 
         public void setBillingTransaction(int UserID)

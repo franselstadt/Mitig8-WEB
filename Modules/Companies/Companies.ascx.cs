@@ -51,7 +51,7 @@ namespace Mitig8.Modules.Companies
         {
             try
             {
-                var Result = DataModal.getCompanies().ToList();
+                var Result = new Mitig8.Application.Companies.CompanyApplication().ReadAll();
                 tblCompanies_Populate(Result);
             }
             catch (Exception ex)
@@ -61,7 +61,7 @@ namespace Mitig8.Modules.Companies
         }
 
 
-        public void tblCompanies_Populate(List<getCompanies_Result> Result)
+        public void tblCompanies_Populate(List<Mitig8.Domain.Items.View.CompanyListViewItem> Result)
         {
             try
             {
@@ -77,16 +77,16 @@ namespace Mitig8.Modules.Companies
                 sb.AppendLine("<th>Quote</th>");
                 sb.AppendLine("<th>Options</th>");
                 sb.AppendLine("</tr></thead><tbody>");
-                foreach (getCompanies_Result Row in Result)
+                foreach (Mitig8.Domain.Items.View.CompanyListViewItem Row in Result)
                 {
                     sb.AppendLine("<tr>");
-                    sb.AppendLine("<td>" + Row.ID.ToString() + "</td>");
+                    sb.AppendLine("<td>" + Row.CompanyID.ToString() + "</td>");
                     sb.AppendLine("<td>" + Row.Name.ToString() + "</td>");
                     sb.AppendLine("<td>" + Row.Type.ToString() + "</td>");
                     sb.AppendLine("<td>" + Row.Tell.ToString() + "</td>");
                     sb.AppendLine("<td>" + Row.Email.ToString() + "</td>");
                     sb.AppendLine("<td>" + Row.Registration.ToString() + "</td>");
-                    sb.AppendLine("<td><div style='width:40px;font-weight:500'><a data-placement=\"top\"  style=\"font-size: 12px;padding: 5px;/*color:orange;*/cursor:pointer\" onclick=\"PolicyRiskManagementControls('" + Row.ID.ToString() + "');\" data-backdrop=\"static\"  data-toggle=\"modal\" ><span class='glyphicon glyphicon-new-window'></span></a></div></td>");
+                    sb.AppendLine("<td><div style='width:40px;font-weight:500'><a data-placement=\"top\"  style=\"font-size: 12px;padding: 5px;/*color:orange;*/cursor:pointer\" onclick=\"PolicyRiskManagementControls('" + Row.CompanyID.ToString() + "');\" data-backdrop=\"static\"  data-toggle=\"modal\" ><span class='glyphicon glyphicon-new-window'></span></a></div></td>");
                     sb.AppendLine("</tr>");
                 }
                 sb.AppendLine("</tbody>");

@@ -1,31 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Mitig8.Application.Authentication;
+using Mitig8.Domain.Items.View;
 
 namespace Mitig8
 {
     public class AuthenticateController : ApiController
     {
-        DataModal DataModal = new DataModal();
+        private AuthenticationApplication authenticationApplication = new AuthenticationApplication();
 
-
-        //[Route("Authenticate/GetSessionToken")]
         [HttpGet]
         public HttpResponseMessage getSessionToken([FromUri] string Email, [FromUri] string Password, [FromUri] int Pin, [FromUri] int ApplicationID, [FromUri] string IPAddress)
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK, DataModal.getSessionToken(Email, Password, Pin, ApplicationID, IPAddress).ToList());
+                SessionTokenViewItem token = this.authenticationApplication.IssueToken(Email, Password, Pin, ApplicationID, IPAddress);
+                return this.Request.CreateResponse(HttpStatusCode.OK, new[] { token }.ToList());
             }
             catch (Exception ex)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
+                return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
             }
         }
     }
 }
-
-

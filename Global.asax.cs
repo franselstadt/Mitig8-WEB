@@ -15,6 +15,7 @@ namespace Mitig8
 
         protected void Application_Start(object sender, EventArgs e)
         {
+            Mitig8.Architecture.CompositionRoot.Compose();
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

@@ -137,7 +137,7 @@ namespace Mitig8
 
         private void Unauthorize()
         {
-            JS(" $(document).ready(function(){ let timerIntervalUnauthorized; Swal.fire({ title: 'Unauthorized',icon:'error', html: 'You will be redirected in <b></b> milliseconds.', timer: 5000,allowOutsideClick:false, timerProgressBar: true, onBeforeOpen: () => { Swal.showLoading(); timerIntervalUnauthorized = setInterval(() => { Swal.getContent().querySelector('b').textContent = Swal.getTimerLeft(); }, 100); }, onClose: () => { clearInterval(timerIntervalUnauthorized); window.location = 'http://secure.mitig8.co.za'; } }).then((result) => { if (result.dismiss === Swal.DismissReason.timer) { console.log('I was closed by the timer'); } }); });");
+            JS(" $(document).ready(function(){ let timerIntervalUnauthorized; Swal.fire({ title: 'Unauthorized',icon:'error', html: 'You will be redirected in <b></b> milliseconds.', timer: 5000,allowOutsideClick:false, timerProgressBar: true, onBeforeOpen: () => { Swal.showLoading(); timerIntervalUnauthorized = setInterval(() => { Swal.getContent().querySelector('b').textContent = Swal.getTimerLeft(); }, 100); }, onClose: () => { clearInterval(timerIntervalUnauthorized); window.location = '" + Mitig8.Architecture.AppSettings.SecurePortalUrl + "'; } }).then((result) => { if (result.dismiss === Swal.DismissReason.timer) { console.log('I was closed by the timer'); } }); });");
         }
 
         public static string GetCookieStatic(string Cookie)
